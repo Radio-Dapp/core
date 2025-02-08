@@ -6,7 +6,7 @@ import { tx } from "./utils";
 const firstVotingRoundStartTs = 1658429955;
 const votingEpochDurationSeconds = 90;
 
-const FDC_HUB_ADDRESS = "0x1c78A073E3BD2aCa4cc327d55FB0cD4f0549B55b"; // Valid only on coston. In production get the address from the ContractRegistry
+const FDC_HUB_ADDRESS = "0x48aC463d7975828989331F4De43341627b9c5f1D"; // Valid only on coston. In production get the address from the ContractRegistry
 
 export default async function (requestData: any) {
     const fdcHUB = web3Client.writeContract({
@@ -29,12 +29,13 @@ export default async function (requestData: any) {
         functionName: "requestAttestation",
         args: [requestData.abiEncodedRequest],
         account: web3Client.account.address,
-        value: 1,
+        value: 10_000n,
         chain: web3Client.chain,
     });
 
     const txn = await tx(fdcHUB);
 
+    console.log("tcn : ", txn);
     // // Call to the FDC Hub protocol to provide attestation.
     // const tx = await fdcHUB.requestAttestation(requestData.abiEncodedRequest, {
     //     value: ethers.parseEther("1"),
@@ -44,7 +45,6 @@ export default async function (requestData: any) {
     // Get block number of the block containing contract call
     // const blockNumber = receipt.blockNumber;
     // const block = await ethers.provider.getBlock(blockNumber);
-    console.log(txn)
 
     // // Calculate roundId
     // const roundId = Math.floor(

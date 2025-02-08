@@ -5,8 +5,8 @@ const {
 } = process.env;
 
 export default async function (txId: string) {
-    const attestationType = "0x" + toHex("EVMTransaction");
-    const sourceType = "0x" + toHex("testETH");
+    const attestationType = toHex("EVMTransaction");
+    const sourceType = toHex("testETH");
     const requestData = {
         attestationType: attestationType,
         sourceId: sourceType,
@@ -18,13 +18,13 @@ export default async function (txId: string) {
             logIndices: [],
         },
     };
-    console.log(requestData)
+
     const response = await fetch(
         `${VERIFIER_URL_TESTNET}verifier/eth/EVMTransaction/prepareRequest`,
         {
             method: "POST",
             headers: {
-                "X-API-KEY": "XXX",
+                "X-API-KEY": "00000000-0000-0000-0000-000000000000",
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(requestData),

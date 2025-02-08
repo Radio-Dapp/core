@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@flarenetwork/flare-periphery-contracts": "^0.1.21",
+    "solc": "0.8.19"
+  }
+}

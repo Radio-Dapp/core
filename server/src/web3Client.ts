@@ -14,6 +14,7 @@ const account = privateKeyToAccount(process.env.PRIVATE_KEY as "0x");
 const client = createWalletClient({
     transport: http(flareTestnet.rpcUrls.default.http[0]),
     account,
+    chain: flareTestnet,
 }).extend(publicActions);
 
 const web3Client = client;

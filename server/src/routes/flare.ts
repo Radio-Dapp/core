@@ -15,7 +15,7 @@ router.get("/att", async (ctx) => {
 
     // Step 1: Prepare the attestation request
     const preparedRequest = await prepareEVMTransactionAttestationRequest(txId);
-    
+
     // Step 2: Submit the request and get round ID
     const roundId = await submitRequest(preparedRequest);
     

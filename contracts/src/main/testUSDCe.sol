@@ -1,7 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity =0.8.19;
 
-contract RadioPeriphery {
+import "@openzeppelin/contracts/tokens/ERC20/ERC20.sol";
+
+contract RadioPeriphery is ERC20{
     mapping(address => bool) public managers;
 
     constructor() {
