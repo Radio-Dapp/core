@@ -1,68 +1,167 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+/* Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?&family=Manrope:wght@200..800&&&display=swap");
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Local Fonts */
+@font-face {
+  font-family: "Garet";
+  src: url("./shared/fonts/Garet-Book.woff2") format("woff2"),
+    url("./shared/fonts/Garet-Book.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+@font-face {
+  font-family: "Garet";
+  src: url("./shared/fonts/Garet-Heavy.woff") format("woff2"),
+    url("./shared/fonts/Garet-Heavy.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+@font-face {
+  font-family: "Codec Pro";
+  src: url("./shared/fonts/CodecPro-Regular.ttf") format("woff2");
+  font-weight: normal;
+  font-style: normal;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@media (prefers-color-scheme: light) {
+@layer base {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    --grey: 225 9% 11%;
+    --foreground: 222 13% 93%;
+
+    --primary: 200 90% 27%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 215 18% 6%;
+    --secondary-foreground: 0 0% 96%;
+
+    --muted: 214 15% 18%;
+    --muted-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 4% 20%;
+
+    --radius: 0.5rem;
   }
-  a:hover {
-    color: #747bff;
+}
+
+@layer base {
+  * {
+    @apply border-border font-manrope;
   }
-  button {
-    background-color: #f9f9f9;
+  body {
+    @apply bg-background text-grey-800 antialiased;
+  }
+  .btn-icon {
+    @apply w-9 h-9 flex items-center justify-center rounded-md text-hover;
+  }
+  .text-hover {
+    @apply text-grey-500 hover:text-grey-700 transition-colors cursor-pointer;
+  }
+  .glass {
+    @apply shadow-lg bg-opacity-70 backdrop-filter backdrop-blur-[8px];
+  }
+  .p-page {
+    @apply px-[4vw] py-[2vh];
+  }
+  .absolute-cover {
+    @apply absolute top-0 left-0 w-full h-full;
+  }
+
+  .loader {
+    animation: rotate 1s infinite;
+    height: 50px;
+    width: 50px;
+  }
+
+  .loader:before,
+  .loader:after {
+    border-radius: 50%;
+    content: "";
+    display: block;
+    height: 20px;
+    width: 20px;
+  }
+  .loader:before {
+    animation: ball1 1s infinite;
+    background-color: #fff;
+    box-shadow: 30px 0 0 #7DB569;
+    margin-bottom: 10px;
+  }
+  .loader:after {
+    animation: ball2 1s infinite;
+    background-color: #7DB569;
+    box-shadow: 30px 0 0 #fff;
+  }
+
+  @keyframes rotate {
+    0% { transform: rotate(0deg) scale(0.8) }
+    50% { transform: rotate(360deg) scale(1.2) }
+    100% { transform: rotate(720deg) scale(0.8) }
+  }
+
+  @keyframes ball1 {
+    0% {
+      box-shadow: 30px 0 0 #7DB569;
+    }
+    50% {
+      box-shadow: 0 0 0 #7DB569;
+      margin-bottom: 0;
+      transform: translate(15px, 15px);
+    }
+    100% {
+      box-shadow: 30px 0 0 #7DB569;
+      margin-bottom: 10px;
+    }
+  }
+
+  @keyframes ball2 {
+    0% {
+      box-shadow: 30px 0 0 #fff;
+    }
+    50% {
+      box-shadow: 0 0 0 #fff;
+      margin-top: -20px;
+      transform: translate(15px, 15px);
+    }
+    100% {
+      box-shadow: 30px 0 0 #fff;
+      margin-top: 0;
+    }
+  }
+  
+
+}
+
+@layer utilities {
+  /* others */
+  .primary {
+    @apply bg-primary text-primary-foreground;
+  }
+  .secondary {
+    @apply bg-secondary text-secondary-foreground;
+  }
+  .base {
+    @apply bg-grey text-foreground;
+  }
+  .destructive {
+    @apply bg-destructive text-destructive-foreground;
+  }
+  .btn-sm {
+    @apply h-9 rounded-sm px-2 font-medium;
+  }
+  .btn {
+    @apply h-11 rounded-md px-3 font-medium;
+  }
+  .btn-lg {
+    @apply h-9 rounded-lg px-5 font-semibold;
   }
 }

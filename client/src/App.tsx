@@ -1,35 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Navigate, Route, Routes } from "react-router";
+import Error404 from "./pages/_404";
+import Landing from "./pages/landing/Landing";
+import Home from "./pages/dashboard/home/Home";
+import Explore from "./pages/dashboard/explore/Explore";
+import Create from "./pages/dashboard/create/Create";
+import Account from "./pages/dashboard/account/Account";
+import Support from "./pages/dashboard/help/Support";
+import Settings from "./pages/dashboard/settings/Settings";
+import Profile from "./pages/dashboard/profile/Profile";
+import Faucet from "./pages/dashboard/faucet/Faucet";
+import FundDetail from "./pages/dashboard/fund/FundDetail";
+import FundBuy from "./pages/dashboard/fund/FundBuy";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Routes>
+      {/* // Redirects */}
+      <Route path="auth" element={<Navigate to="/auth/login" />} />
+      <Route path="login" element={<Navigate to="/auth/login" />} />
+      <Route path="dashboard" element={<Navigate to="/dashboard/home" />} />
+      <Route path="home" element={<Navigate to="/dashboard/home" />} />
+
+      {/* Dashboard Routes */}
+      <Route path="dashboard">
+        <Route path="home" element={<Home />} />
+        <Route path="explore" element={<Explore />} />
+        <Route path="create" element={<Create />} />
+        <Route path="account" element={<Account />} />
+        <Route path="support" element={<Support />} />
+        <Route path="settings" element={<Settings />} />
+        <Route path="profile" element={<Profile />} />
+        <Route path="faucet" element={<Faucet />} />
+        <Route path="explore/:fundId" element={<FundDetail />} />
+        <Route path="funds/buy/:fundId" element={<FundBuy />} />
+      </Route>
+
+      {/* Other Routes */}
+      <Route path="/" element={<Landing />} />
+      <Route path="*" element={<Error404 />} />
+    </Routes >
   )
 }
-
-export default App
