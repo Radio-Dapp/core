@@ -3,9 +3,13 @@ import Error404 from "./pages/_404";
 import Landing from "./pages/landing/Landing";
 import Home from "./pages/dashboard/home/Home";
 import Explore from "./pages/dashboard/explore/Explore";
+import Create from "./pages/dashboard/create/Create";
 import Account from "./pages/dashboard/account/Account";
 import Support from "./pages/dashboard/help/Support";
+import Settings from "./pages/dashboard/settings/Settings";
+import Profile from "./pages/dashboard/profile/Profile";
 import Faucet from "./pages/dashboard/faucet/Faucet";
+import FundDetail from "./pages/dashboard/fund/FundDetail";
 
 export default function App() {
   return (
@@ -19,10 +23,14 @@ export default function App() {
       {/* Dashboard Routes */}
       <Route path="dashboard">
         <Route path="home" element={<Home />} />
+        <Route path="explore" element={<Explore />} />
+        <Route path="create" element={<Create />} />
         <Route path="account" element={<Account />} />
         <Route path="support" element={<Support />} />
+        <Route path="settings" element={<Settings />} />
+        <Route path="profile" element={<Profile />} />
         <Route path="faucet" element={<Faucet />} />
-        <Route path="explore" element={<Explore />} />
+        <Route path="explore/:fundId" element={<FundDetail />} />
       </Route>
 
       {/* Other Routes */}

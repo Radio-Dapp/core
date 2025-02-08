@@ -5,6 +5,8 @@ import Icon from "../../shared/components/Icon";
 import { useNavigate, useLocation } from "react-router";
 import { useEffect, useState } from "react";
 import Link from "../../shared/components/Link";
+import { Tooltip } from "@heroui/react";
+
 
 type Props = {}
 
