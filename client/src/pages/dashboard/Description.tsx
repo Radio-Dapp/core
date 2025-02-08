@@ -17,7 +17,7 @@ export default function DescriptionAlert(props: Props) {
                 base: cn(
                     "bg-grey-100 shadow-sm",
                     "border-1 border-grey-300/70",
-                    "relative before:content-[''] before:absolute before:z-10",
+                    "relative before:content-[''] rounded-sm before:absolute before:z-10",
                 ),
                 mainWrapper: cn("pt-1"),
                 iconWrapper: cn("dark:bg-transparent"),

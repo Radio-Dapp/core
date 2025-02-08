@@ -1,5 +1,5 @@
 import { Breadcrumbs, BreadcrumbItem } from "@heroui/react";
-import { trucateString } from "../lib/utils";
+import { truncateString } from "../lib/utils";
 
 export default function BreadcrumbComponent({ items }: {
   items: { label: string, href: string }[]
@@ -7,7 +7,7 @@ export default function BreadcrumbComponent({ items }: {
   return (
     <Breadcrumbs>
       {items && items.map((item, index) => (
-        <BreadcrumbItem key={index} href={item.href}>{trucateString(item.label, 10)}</BreadcrumbItem>
+        <BreadcrumbItem key={index} href={item.href}>{truncateString(item.label, 10)}</BreadcrumbItem>
       ))}
     </Breadcrumbs>
   );

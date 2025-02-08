@@ -10,6 +10,7 @@ import Settings from "./pages/dashboard/settings/Settings";
 import Profile from "./pages/dashboard/profile/Profile";
 import Faucet from "./pages/dashboard/faucet/Faucet";
 import FundDetail from "./pages/dashboard/fund/FundDetail";
+import FundBuy from "./pages/dashboard/fund/FundBuy";
 
 export default function App() {
   return (
@@ -31,6 +32,7 @@ export default function App() {
         <Route path="profile" element={<Profile />} />
         <Route path="faucet" element={<Faucet />} />
         <Route path="explore/:fundId" element={<FundDetail />} />
+        <Route path="funds/buy/:fundId" element={<FundBuy />} />
       </Route>
 
       {/* Other Routes */}

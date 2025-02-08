@@ -18,6 +18,6 @@ export function formatAddress(address: string) {
   );
 }
 
-export function trucateString(description: string, length: number) {
+export function truncateString(description: string, length: number) {
   return description.length > length ? `${description.substring(0, length)}...` : description
 }

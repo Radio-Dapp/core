@@ -46,7 +46,7 @@ function CreateFundForm(props: Props) {
                             placeholder="Enter fund name"
                             labelPlacement="outside"
                             classNames={{
-                                inputWrapper: "h-[3.5rem] border border-border/60 bg-grey-100",
+                                inputWrapper: "h-[3rem] border border-border/60 bg-grey-100 rounded-sm",
                                 label: "pb-2 z-0"
                             }}
                         />
@@ -60,7 +60,7 @@ function CreateFundForm(props: Props) {
                             placeholder="Enter fund type"
                             labelPlacement="outside"
                             classNames={{
-                                inputWrapper: "h-[3.5rem] border border-border/60 bg-grey-100",
+                                inputWrapper: "h-[3rem] border border-border/60 bg-grey-100 rounded-sm",
                                 label: "pb-2 z-0"
                             }}
                         />
@@ -74,7 +74,7 @@ function CreateFundForm(props: Props) {
                         placeholder="Enter your description"
                         variant="bordered"
                         classNames={{
-                            inputWrapper: "h-[3.5rem] border border-border/60 bg-grey-100",
+                            inputWrapper: "h-[3rem] border border-border/60 bg-grey-100 rounded-sm",
                             label: "pb-2 z-0"
                         }}
                     />
@@ -98,7 +98,7 @@ function CreateFundForm(props: Props) {
                         placeholder="Enter minimum investment"
                         labelPlacement="outside"
                         classNames={{
-                            inputWrapper: "h-[3.5rem] border border-border/60 bg-grey-100",
+                            inputWrapper: "h-[3rem] border border-border/60 bg-grey-100 rounded-sm",
                             label: "pb-2 z-0"
                         }}
                     />
@@ -111,7 +111,7 @@ function CreateFundForm(props: Props) {
                         placeholder="Enter maximum investment"
                         labelPlacement="outside"
                         classNames={{
-                            inputWrapper: "h-[3.5rem] border border-border/60 bg-grey-100",
+                            inputWrapper: "h-[3rem] border border-border/60 bg-grey-100 rounded-sm",
                             label: "pb-2 z-0"
                         }}
                     />

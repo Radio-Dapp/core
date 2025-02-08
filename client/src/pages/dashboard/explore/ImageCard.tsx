@@ -1,5 +1,4 @@
-import { Button, Chip, Image } from "@heroui/react"
-import { trucateString } from "../../../shared/lib/utils";
+import { truncateString } from "../../../shared/lib/utils";
 
 type Props = {
     item: {
@@ -22,14 +21,14 @@ function ImageCard({ item }: Props) {
                 />
             </div>
 
-            <div className="flex flex-col gap-4 p-4">
+            <div className="flex flex-col justify-between gap-4 p-4">
                 <div className="">
                     <h4 className="text-sm font-semibold">{item.name}</h4>
-                    <p className="text-small text-grey-500">{trucateString(item.description, 50)}</p>
+                    <p className="text-small text-grey-500">{truncateString(item.description, 32)}</p>
                 </div>
 
                 <div className="flex flex-col gap-2 text-tiny text-grey-500">
-                    <span className="flex justify-between">
+                    <span className="flex justify-between gap-2">
                         <p>Min Investment: $500</p>
                         <p>Max Investment: $5000</p>
                     </span>

@@ -31,7 +31,7 @@ const TokenSelect = (props: Props) => {
                             variant="bordered"
                             inputProps={{
                                 classNames: {
-                                    inputWrapper: "border border-border/60 bg-grey-100",
+                                    inputWrapper: "border border-border/60 bg-grey-100 rounded-sm",
                                     label: "z-0"
                                 }
                             }}
@@ -79,7 +79,7 @@ const TokenSelect = (props: Props) => {
                         max={100}
                         min={1}
                         classNames={{
-                            inputWrapper: "border border-border/60 bg-grey-100",
+                            inputWrapper: "border border-border/60 bg-grey-100 rounded-sm",
                             label: "z-0"
                         }}
                         onValueChange={(value) => {

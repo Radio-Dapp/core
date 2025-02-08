@@ -1,5 +1,5 @@
 import { Card, CardHeader, Chip } from "@heroui/react"
-import { trucateString } from "../../../shared/lib/utils"
+import { truncateString } from "../../../shared/lib/utils"
 
 type Props = {
     item: {
@@ -25,7 +25,7 @@ function FundCard(props: Props) {
             <div className="flex flex-col bg-grey-200 px-6 rounded-xl mx-1 mb-1 h-36 py-5 justify-between hover:bg-grey-250 transition-all">
                 <div>
                     <p className="text-grey-600">{props.item.name}</p>
-                    <small className="text-grey-800">{trucateString(props.item.description, 50)}</small>
+                    <small className="text-grey-800">{truncateString(props.item.description, 50)}</small>
                 </div>
 
                 <div className="text-grey-600 flex w-full justify-between mt-6">
