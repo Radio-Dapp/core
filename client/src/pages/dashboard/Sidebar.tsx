@@ -62,13 +62,11 @@ function Sidebar({ }: Props) {
       <section className="flex items-center justify-center w-full h-full ">
         <ul className="flex flex-col items-center justify-center gap-6">
           {sidebarItems.map((item, index) => (
-            <Tooltip key={index} content={item.name}>
               <li className="btn-icon">
                 <Link to={item.to}>
                   <Icon name={item.iconName} className="w-6" />
                 </Link>
               </li>
-            </Tooltip>
           ))}
         </ul>
       </section>

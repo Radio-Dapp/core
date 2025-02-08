@@ -1,4 +1,4 @@
-import flare from "./flare.js";
+import flare from "./flare";
+import funds from "./funds";
 
-
-export {flare}
+export {flare, funds}
