@@ -1,4 +1,5 @@
-import flare from "./flare.js";
+import flare from "./flare";
+import data from "./data";
 
 
-export {flare}
+export {flare, data}
