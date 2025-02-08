@@ -4,6 +4,8 @@ import TopNav from "../TopNav";
 import Icon from "../../../shared/components/Icon";
 import { trucateString } from "../../../shared/lib/utils";
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
+import HoldersDetails from "./HoldersDetails";
+
 
 type Props = {}
 
@@ -30,6 +32,8 @@ const renderChart = {
 }
 
 export default function FundDetail({ }: Props) {
+
+  
     return (
         <div className="relative flex w-full min-h-screen bg-grey-50">
             <Sidebar />
@@ -188,6 +192,11 @@ export default function FundDetail({ }: Props) {
                                 </CardFooter>
                             </div>
                         </Card>
+                    </div>
+
+
+                    <div className="flex flex-col gap-6 md:flex-row">
+                       <HoldersDetails />
                     </div>
 
 
