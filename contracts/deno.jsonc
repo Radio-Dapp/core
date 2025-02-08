@@ -1,0 +1,15 @@
+{
+  "tasks": {
+    "re": "deno run -A mod.ts",
+    "localnode": "../../bin/HH/node.bat"
+  },
+  "imports": {
+    "@flarenetwork/flare-periphery-contracts": "npm:@flarenetwork/flare-periphery-contracts@^0.1.17",
+    "@openzeppelin/contracts": "npm:@openzeppelin/contracts@^4.9.0",
+    "@uniswap/sdk": "npm:@uniswap/sdk@^3.0.3",
+    "@uniswap/v3-core": "npm:@uniswap/v3-core@^1.0.1",
+    "@uniswap/v3-periphery": "npm:@uniswap/v3-periphery@^1.4.4",
+    "viem": "npm:viem@^2.21.49"
+  },
+  "exclude": ["cache", "definitions.gen.ts", "environment/*tmp.ts"]
+}
