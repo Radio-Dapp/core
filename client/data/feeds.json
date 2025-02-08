@@ -1,0 +1,512 @@
+[
+    {
+      "Name": "FLR/USD",
+      "Index": "0",
+      "Feed ID": "0x01464c522f55534400000000000000000000000000",
+      "Details": {
+        "Base Asset": "Flare",
+        "Category": "Crypto"
+      },
+      "Risk": "🟢"
+    },
+    {
+      "Name": "SGB/USD",
+      "Index": "1",
+      "Feed ID": "0x015347422f55534400000000000000000000000000",
+      "Details": {
+        "Base Asset": "Songbird",
+        "Category": "Crypto"
+      },
+      "Risk": "🟡"
+    },
+    {
+      "Name": "BTC/USD",
+      "Index": "2",
+      "Feed ID": "0x014254432f55534400000000000000000000000000",
+      "Details": {
+        "Base Asset": "Bitcoin",
+        "Category": "Crypto"
+      },
+      "Risk": "🟢"
+    },
+    {
+      "Name": "XRP/USD",
+      "Index": "3",
+      "Feed ID": "0x015852502f55534400000000000000000000000000",
+      "Details": {
+        "Base Asset": "XRP",
+        "Category": "Crypto"
+      },
+      "Risk": "🟢"
+    },
+    {
+      "Name": "LTC/USD",
+      "Index": "4",
+      "Feed ID": "0x014c54432f55534400000000000000000000000000",
+      "Details": {
+        "Base Asset": "Litecoin",
+        "Category": "Crypto"
+      },
+      "Risk": "🟢"
+    },
+    {
+      "Name": "XLM/USD",
+      "Index": "5",
+      "Feed ID": "0x01584c4d2f55534400000000000000000000000000",
+      "Details": {
+        "Base Asset": "Stellar",
+        "Category": "Crypto"
+      },
+      "Risk": "🟡"
+    },
+    {
+      "Name": "DOGE/USD",
+      "Index": "6",
+      "Feed ID": "0x01444f47452f555344000000000000000000000000",
+      "Details": {
+        "Base Asset": "Dogecoin",
+        "Category": "Crypto"
+      },
+      "Risk": "🟡"
+    },
+    {
+      "Name": "ADA/USD",
+      "Index": "7",
+      "Feed ID": "0x014144412f55534400000000000000000000000000",
+      "Details": {
+        "Base Asset": "Cardano",
+        "Category": "Crypto"
+      },
+      "Risk": "🟢"
+    },
+    {
+      "Name": "ALGO/USD",
+      "Index": "8",
+      "Feed ID": "0x01414c474f2f555344000000000000000000000000",
+      "Details": {
+        "Base Asset": "Algorand",
+        "Category": "Crypto"
+      },
+      "Risk": "🟡"
+    },
+    {
+      "Name": "ETH/USD",
+      "Index": "9",
+      "Feed ID": "0x014554482f55534400000000000000000000000000",
+      "Details": {
+        "Base Asset": "Ethereum",
+        "Category": "Crypto"
+      },
+      "Risk": "🟢"
+    },
+    {
+      "Name": "FIL/USD",
+      "Index": "10",
+      "Feed ID": "0x0146494c2f55534400000000000000000000000000",
+      "Details": {
+        "Base Asset": "Filecoin",
+        "Category": "Crypto"
+      },
+      "Risk": "🟢"
+    },
+    {
+      "Name": "ARB/USD",
+      "Index": "11",
+      "Feed ID": "0x014152422f55534400000000000000000000000000",
+      "Details": {
+        "Base Asset": "Arbitrum",
+        "Category": "Crypto"
+      },
+      "Risk": "🟢"
+    },
+    {
+      "Name": "AVAX/USD",
+      "Index": "12",
+      "Feed ID": "0x01415641582f555344000000000000000000000000",
+      "Details": {
+        "Base Asset": "Avalanche",
+        "Category": "Crypto"
+      },
+      "Risk": "🟢"
+    },
+    {
+      "Name": "BNB/USD",
+      "Index": "13",
+      "Feed ID": "0x01424e422f55534400000000000000000000000000",
+      "Details": {
+        "Base Asset": "BNB",
+        "Category": "Crypto"
+      },
+      "Risk": "🟢"
+    },
+    {
+      "Name": "POL/USD",
+      "Index": "14",
+      "Feed ID": "0x01504f4c2f55534400000000000000000000000000",
+      "Details": {
+        "Base Asset": "POL (ex-MATIC)",
+        "Category": "Crypto"
+      },
+      "Risk": "🟢"
+    },
+    {
+      "Name": "SOL/USD",
+      "Index": "15",
+      "Feed ID": "0x01534f4c2f55534400000000000000000000000000",
+      "Details": {
+        "Base Asset": "Solana",
+        "Category": "Crypto"
+      },
+      "Risk": "🟢"
+    },
+    {
+      "Name": "USDC/USD",
+      "Index": "16",
+      "Feed ID": "0x01555344432f555344000000000000000000000000",
+      "Details": {
+        "Base Asset": "USDC",
+        "Category": "Crypto"
+      },
+      "Risk": "🟢"
+    },
+    {
+      "Name": "USDT/USD",
+      "Index": "17",
+      "Feed ID": "0x01555344542f555344000000000000000000000000",
+      "Details": {
+        "Base Asset": "Tether",
+        "Category": "Crypto"
+      },
+      "Risk": "🟢"
+    },
+    {
+      "Name": "XDC/USD",
+      "Index": "18",
+      "Feed ID": "0x015844432f55534400000000000000000000000000",
+      "Details": {
+        "Base Asset": "XDC Network",
+        "Category": "Crypto"
+      },
+      "Risk": "🟡"
+    },
+    {
+      "Name": "TRX/USD",
+      "Index": "19",
+      "Feed ID": "0x015452582f55534400000000000000000000000000",
+      "Details": {
+        "Base Asset": "TRON",
+        "Category": "Crypto"
+      },
+      "Risk": "🟢"
+    },
+    {
+      "Name": "LINK/USD",
+      "Index": "20",
+      "Feed ID": "0x014c494e4b2f555344000000000000000000000000",
+      "Details": {
+        "Base Asset": "Chainlink",
+        "Category": "Crypto"
+      },
+      "Risk": "🟢"
+    },
+    {
+      "Name": "ATOM/USD",
+      "Index": "21",
+      "Feed ID": "0x0141544f4d2f555344000000000000000000000000",
+      "Details": {
+        "Base Asset": "Cosmos Hub",
+        "Category": "Crypto"
+      },
+      "Risk": "🟢"
+    },
+    {
+      "Name": "DOT/USD",
+      "Index": "22",
+      "Feed ID": "0x01444f542f55534400000000000000000000000000",
+      "Details": {
+        "Base Asset": "Polkadot",
+        "Category": "Crypto"
+      },
+      "Risk": "🟢"
+    },
+    {
+      "Name": "TON/USD",
+      "Index": "23",
+      "Feed ID": "0x01544f4e2f55534400000000000000000000000000",
+      "Details": {
+        "Base Asset": "Toncoin",
+        "Category": "Crypto"
+      },
+      "Risk": "🟢"
+    },
+    {
+      "Name": "ICP/USD",
+      "Index": "24",
+      "Feed ID": "0x014943502f55534400000000000000000000000000",
+      "Details": {
+        "Base Asset": "Internet Computer",
+        "Category": "Crypto"
+      },
+      "Risk": "🟢"
+    },
+    {
+      "Name": "SHIB/USD",
+      "Index": "25",
+      "Feed ID": "0x01534849422f555344000000000000000000000000",
+      "Details": {
+        "Base Asset": "Shiba Inu",
+        "Category": "Crypto"
+      },
+      "Risk": "🔴"
+    },
+    {
+      "Name": "DAI/USD",
+      "Index": "26",
+      "Feed ID": "0x014441492f55534400000000000000000000000000",
+      "Details": {
+        "Base Asset": "Dai",
+        "Category": "Crypto"
+      },
+      "Risk": "🟢"
+    },
+    {
+      "Name": "BCH/USD",
+      "Index": "27",
+      "Feed ID": "0x014243482f55534400000000000000000000000000",
+      "Details": {
+        "Base Asset": "Bitcoin Cash",
+        "Category": "Crypto"
+      },
+      "Risk": "🟢"
+    },
+    {
+      "Name": "NEAR/USD",
+      "Index": "28",
+      "Feed ID": "0x014e4541522f555344000000000000000000000000",
+      "Details": {
+        "Base Asset": "NEAR Protocol",
+        "Category": "Crypto"
+      },
+      "Risk": "🟢"
+    },
+    {
+      "Name": "LEO/USD",
+      "Index": "29",
+      "Feed ID": "0x014c454f2f55534400000000000000000000000000",
+      "Details": {
+        "Base Asset": "LEO Token",
+        "Category": "Crypto"
+      },
+      "Risk": "🔴"
+    },
+    {
+      "Name": "UNI/USD",
+      "Index": "30",
+      "Feed ID": "0x01554e492f55534400000000000000000000000000",
+      "Details": {
+        "Base Asset": "Uniswap",
+        "Category": "Crypto"
+      },
+      "Risk": "🟢"
+    },
+    {
+      "Name": "ETC/USD",
+      "Index": "31",
+      "Feed ID": "0x014554432f55534400000000000000000000000000",
+      "Details": {
+        "Base Asset": "Ethereum Classic",
+        "Category": "Crypto"
+      },
+      "Risk": "🟡"
+    },
+    {
+      "Name": "WIF/USD",
+      "Index": "32",
+      "Feed ID": "0x015749462f55534400000000000000000000000000",
+      "Details": {
+        "Base Asset": "dogwifhat",
+        "Category": "Crypto"
+      },
+      "Risk": "🔴"
+    },
+    {
+      "Name": "BONK/USD",
+      "Index": "33",
+      "Feed ID": "0x01424f4e4b2f555344000000000000000000000000",
+      "Details": {
+        "Base Asset": "Bonk",
+        "Category": "Crypto"
+      },
+      "Risk": "🔴"
+    },
+    {
+      "Name": "JUP/USD",
+      "Index": "34",
+      "Feed ID": "0x014a55502f55534400000000000000000000000000",
+      "Details": {
+        "Base Asset": "Jupiter",
+        "Category": "Crypto"
+      },
+      "Risk": "🟢"
+    },
+    {
+      "Name": "ETHFI/USD",
+      "Index": "35",
+      "Feed ID": "0x0145544846492f5553440000000000000000000000",
+      "Details": {
+        "Base Asset": "Ether.fi",
+        "Category": "Crypto"
+      },
+      "Risk": "🟡"
+    },
+    {
+      "Name": "ENA/USD",
+      "Index": "36",
+      "Feed ID": "0x01454e412f55534400000000000000000000000000",
+      "Details": {
+        "Base Asset": "Ethena",
+        "Category": "Crypto"
+      },
+      "Risk": "🟡"
+    },
+    {
+      "Name": "PYTH/USD",
+      "Index": "37",
+      "Feed ID": "0x01505954482f555344000000000000000000000000",
+      "Details": {
+        "Base Asset": "Pyth Network",
+        "Category": "Crypto"
+      },
+      "Risk": "🟢"
+    },
+    {
+      "Name": "HNT/USD",
+      "Index": "38",
+      "Feed ID": "0x01484e542f55534400000000000000000000000000",
+      "Details": {
+        "Base Asset": "Helium",
+        "Category": "Crypto"
+      },
+      "Risk": "🟡"
+    },
+    {
+      "Name": "SUI/USD",
+      "Index": "39",
+      "Feed ID": "0x015355492f55534400000000000000000000000000",
+      "Details": {
+        "Base Asset": "Sui",
+        "Category": "Crypto"
+      },
+      "Risk": "🟢"
+    },
+    {
+      "Name": "PEPE/USD",
+      "Index": "40",
+      "Feed ID": "0x01504550452f555344000000000000000000000000",
+      "Details": {
+        "Base Asset": "Pepe",
+        "Category": "Crypto"
+      },
+      "Risk": "🔴"
+    },
+    {
+      "Name": "QNT/USD",
+      "Index": "41",
+      "Feed ID": "0x01514e542f55534400000000000000000000000000",
+      "Details": {
+        "Base Asset": "Quant",
+        "Category": "Crypto"
+      },
+      "Risk": "🟡"
+    },
+    {
+      "Name": "AAVE/USD",
+      "Index": "42",
+      "Feed ID": "0x01414156452f555344000000000000000000000000",
+      "Details": {
+        "Base Asset": "Aave",
+        "Category": "Crypto"
+      },
+      "Risk": "🟢"
+    },
+    {
+      "Name": "FTM/USD",
+      "Index": "43",
+      "Feed ID": "0x0146544d2f55534400000000000000000000000000",
+      "Details": {
+        "Base Asset": "Fantom",
+        "Category": "Crypto"
+      },
+      "Risk": "🔴"
+    },
+    {
+      "Name": "ONDO/USD",
+      "Index": "44",
+      "Feed ID": "0x014f4e444f2f555344000000000000000000000000",
+      "Details": {
+        "Base Asset": "Ondo",
+        "Category": "Crypto"
+      },
+      "Risk": "🟡"
+    },
+    {
+      "Name": "TAO/USD",
+      "Index": "45",
+      "Feed ID": "0x0154414f2f55534400000000000000000000000000",
+      "Details": {
+        "Base Asset": "Bittensor",
+        "Category": "Crypto"
+      },
+      "Risk": "🟡"
+    },
+    {
+      "Name": "FET/USD",
+      "Index": "46",
+      "Feed ID": "0x014645542f55534400000000000000000000000000",
+      "Details": {
+        "Base Asset": "Artificial Superintelligence Alliance",
+        "Category": "Crypto"
+      },
+      "Risk": "🟢"
+    },
+    {
+      "Name": "RENDER/USD",
+      "Index": "47",
+      "Feed ID": "0x0152454e4445522f55534400000000000000000000",
+      "Details": {
+        "Base Asset": "Render",
+        "Category": "Crypto"
+      },
+      "Risk": "🟢"
+    },
+    {
+      "Name": "NOT/USD",
+      "Index": "48",
+      "Feed ID": "0x014e4f542f55534400000000000000000000000000",
+      "Details": {
+        "Base Asset": "Notcoin",
+        "Category": "Crypto"
+      },
+      "Risk": "🟡"
+    },
+    {
+      "Name": "RUNE/USD",
+      "Index": "49",
+      "Feed ID": "0x0152554e452f555344000000000000000000000000",
+      "Details": {
+        "Base Asset": "THORChain",
+        "Category": "Crypto"
+      },
+      "Risk": "🟡"
+    },
+    {
+      "Name": "TRUMP/USD",
+      "Index": "50",
+      "Feed ID": "0x015452554d502f5553440000000000000000000000",
+      "Details": {
+        "Base Asset": "Official Trump",
+        "Category": "Crypto"
+      },
+      "Risk": "⚫"
+    }
+  ]
