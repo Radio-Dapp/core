@@ -98,7 +98,9 @@ function TopNav({ }: Props) {
                     <h1 className="text-3xl capitalize font-codecPro">
                         {breadCrumbHeader() || "Dashboard"}
                     </h1>
-                    <BreadcrumbComponent items={breadCrumbItems || []} />
+                    <span className="text-sm text-grey-500 ">
+                        <BreadcrumbComponent items={breadCrumbItems || []} />
+                    </span>
                 </div>
 
                 <div className="text-sm flex items-center gap-2">
@@ -106,7 +108,7 @@ function TopNav({ }: Props) {
                         <Icon name="Wallet" className="w-5" />
                     </Link>
                     <button onClick={handleLogout} className="flex text-hover  items-center gap-2 border p-2 rounded-lg hover:bg-grey-100">
-                        <FormatAddress address={user?.wallet?.address || ""} />
+                        <span className="hidden sm:block"><FormatAddress address={user?.wallet?.address || ""} /></span>
                         <Icon name="LogOut" className="w-5" />
                     </button>
                 </div>

@@ -3,7 +3,9 @@ import Icon from "../../../shared/components/Icon";
 import React, { useState } from "react";
 import TokenSelect from "./TokenSelect";
 
-interface Props { }
+interface Props {}
+
+
 
 function CreateFundForm(props: Props) {
     const [fields, setFields] = useState<Field[]>([{

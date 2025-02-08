@@ -11,11 +11,6 @@ interface Props {
 }
 
 const TokenSelect = (props: Props) => {
-    console.log({
-        fields: props.fields,
-        totalPercentageI: props.totalPercentage
-    })
-
     return (
         <div className="flex flex-col items-center justify-center gap-4">
             {(props.totalPercentage !== 100) && (
