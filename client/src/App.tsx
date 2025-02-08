@@ -2,6 +2,10 @@ import { Navigate, Route, Routes } from "react-router";
 import Error404 from "./pages/_404";
 import Landing from "./pages/landing/Landing";
 import Home from "./pages/dashboard/home/Home";
+import Explore from "./pages/dashboard/explore/Explore";
+import Account from "./pages/dashboard/account/Account";
+import Support from "./pages/dashboard/help/Support";
+import Faucet from "./pages/dashboard/faucet/Faucet";
 
 export default function App() {
   return (
@@ -15,6 +19,10 @@ export default function App() {
       {/* Dashboard Routes */}
       <Route path="dashboard">
         <Route path="home" element={<Home />} />
+        <Route path="account" element={<Account />} />
+        <Route path="support" element={<Support />} />
+        <Route path="faucet" element={<Faucet />} />
+        <Route path="explore" element={<Explore />} />
       </Route>
 
       {/* Other Routes */}
