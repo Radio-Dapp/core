@@ -54,6 +54,7 @@ export default function HoldersDetails() {
                 </CardHeader>
                 <CardBody className="">
                     <Table
+                        removeWrapper
                         aria-label="Example table with client async pagination"
                         bottomContent={
                             pages > 1 && (
