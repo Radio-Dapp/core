@@ -34,7 +34,7 @@ const renderChart = {
 
 export default function FundDetail({ }: Props) {
 
-  
+
     return (
         <div className="relative flex w-full min-h-screen bg-grey-50">
             <Sidebar />
@@ -254,9 +254,7 @@ export default function FundDetail({ }: Props) {
                         </Card>
                     </div>
 
-                    <div className="flex flex-col gap-6 md:flex-row">
-                       <HoldersDetails />
-                    </div>
+                    <HoldersDetails />
                 </div>
             </div>
         </div>
