@@ -1,11 +1,15 @@
+import "dotenv/config"
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";
+import { flare } from "./routes/index.js";
 
 const app = new Hono();
 
 app.get("/", (c) => {
   return c.json({ name: "Hello Hono!" });
 });
+
+app.route("/", flare);
 
 const port = 9090;
 
