@@ -42,3 +42,7 @@ export function generateRandomHex(length: number): string {
   }
   return result;
 }
+
+export function isFunction(obj: any) {
+  return typeof obj === "function";
+}

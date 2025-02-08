@@ -1,8 +1,9 @@
 import "dotenv/config";
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";
-import { flare, funds } from "./routes/index.js";
+import { flare, data, funds } from "./routes/index.js";
 import mongoose from "mongoose";
+
 
 const MONG_URI = process.env.MONG_URI;
 const app = new Hono();
@@ -22,6 +23,8 @@ app.get("/", (c) => {
 
 app.route("/", flare);
 app.route("/", funds);
+
+app.route("/", data)
 
 const port = 9090;
 
