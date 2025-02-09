@@ -3,8 +3,8 @@ import { abi } from "./definitions.gen";
 import * as viem from "viem";
 
 const address: Record<string, viem.Address> = {
-    USDCe: "0x",
-    RadioOrchestrator: "0x",
+    USDCe: "0xbF61641a3b61e7cfE14FBDbf0f8B0154246Bedd1",
+    RadioOrchestrator: "0x9a71d37a39146c4bda047a3f58588c58ecbc1311",
 };
 
 const USDCe = {

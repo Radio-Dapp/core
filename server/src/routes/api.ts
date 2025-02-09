@@ -104,7 +104,7 @@ router.post("/create-fund", async (c) => {
       symbol: fundSymbol,
       name: meta.name,
       image:
-        "https://framerusercontent.com/images/Hum9kNmaIhgXEnuF3kBhXbgEPg.png",
+        "https://www.shutterstock.com/image-illustration/top-10-mixed-cryptocurrency-tokens-600nw-2455104089.jpg",
       type: meta.type,
       description: meta.description,
       minimum_investment: meta.minimum_investment,
