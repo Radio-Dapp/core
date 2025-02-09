@@ -30,7 +30,10 @@ contract RadioOrchestrator is Ownable {
         one_usdc = 10 ** USDCe.decimals();
 
         relayManager = new RelayManager();
-        radioFTSOinterface = new RadioFTSOinterface();
+        // Hardcoded for Coston2
+        radioFTSOinterface = new RadioFTSOinterface(
+            0x3d893C53D9e8056135C26C8c638B76C8b60Df726
+        );
 
         // feeController = new ();
     }
@@ -50,8 +53,7 @@ contract RadioOrchestrator is Ownable {
     function _createFund(
         address creator_,
         string memory name_,
-        string memory symbol_,
-        string memory uri_
+        string memory symbol_
     ) private {
         RadioFund newFund = new RadioFund(creator_, name_, symbol_);
         fundCreatedAtBlockNumber[address(newFund)] = block.number;
@@ -79,7 +81,7 @@ contract RadioOrchestrator is Ownable {
             "Execution Failed; Invalidated by RelayManager"
         );
 
-        _createFund(msg.sender, name_, symbol_, uri_);
+        _createFund(msg.sender, name_, symbol_);
     }
 
     function getUSDCeForFundPurchaseFrom(

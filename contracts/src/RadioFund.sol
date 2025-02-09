@@ -39,132 +39,63 @@ contract RadioFund is ERC20 {
         _creator = creator_;
     }
 
-    function setConfig(uint8[] memory sharesConfig_) public onkyCreator {
-        require(sharesConfig_.length == _orchestrator.radioFTSOinterface.totalTokens(), "Invalid config");
-for (uint256 i = 0; i < sharesConfig_.length; i++) {
+    function setConfig(uint8[] memory sharesConfig_) public onlyCreator {
+        require(
+            sharesConfig_.length ==
+                _orchestrator.radioFTSOinterface().totalTokens(),
+            "Invalid config"
+        );
+        for (uint256 i = 0; i < sharesConfig_.length; i++) {
+            uint8 diff = sharesConfig_[i] - sharesConfig[i];
+            // This is where rebalancing happens
+            if (diff != 0) {
+                sharesConfig[i] = sharesConfig_[i];
+                if (diff > 0) {
+                    // buy
+                } else {
+                    // sell
+                }
+            }
         }
+    }
 
-    function liquidity() public view returns (uint256) {
+    function liquidity() public payable returns (uint256) {
         return
-            _orchestrator.radioFTSOinterface.getUSDCeValueForTokenShare(sharesConfig) *
-            totalSupply();
-    }
-
-    function tokenPrice() public view returns (uint256) {
-        return _tokenPrice;
-    }
-
-    function calculateAmountOut(uint256 fraxIn_) public view returns (uint256) {
-        uint256 numerator = supply() * fraxIn_;
-        uint256 denominator = reserve() + fraxIn_;
-
-        require(denominator < numerator, "Mathematical overflow");
-        require(denominator != 0, "Division by zero");
-
-        return numerator / denominator;
-    }
-
-    function calculateFraxOut(uint256 amountIn_) public view returns (uint256) {
-        uint256 numerator = reserve() * amountIn_;
-        uint256 denominator = supply() + amountIn_;
-
-        require(denominator < numerator, "Mathematical overflow");
-        require(denominator != 0, "Division by zero");
-
-        return numerator / denominator;
-    }
-
-    function _buy(
-        address buyer_,
-        uint256 fraxIn_,
-        uint256 amountOutMin_
-    ) private updatePriceAndReserve {
-        require(fraxIn_ > one_pFrax, "fraxIn must be greater than 1");
-        require(amountOutMin_ > 0, "amountOutMin must be greater than 0");
-
-        require(pFRAX.balanceOf(buyer_) >= fraxIn_, "Insufficient Balance");
-
-        uint256 fee = fraxIn_ /
-            _feeController.pumpfaxtTokenBuySellFee_FRACTION();
-
-        uint256 amountOut_ = calculateAmountOut(fraxIn_ - fee);
-        require(amountOut_ >= amountOutMin_, "Slippage tolerance exceeded");
-
-        _feeController.submitFee(buyer_, fee, keccak256("buyPumpfaxtToken"));
-        _master.getPFraxForTokenPurchaseFrom(buyer_, fraxIn_ - fee);
-        _transfer(address(this), buyer_, amountOut_);
-    }
-
-    function buy(uint256 fraxIn_, uint256 amountOutMin_) external {
-        _buy(msg.sender, fraxIn_, amountOutMin_);
+            _orchestrator.radioFTSOinterface().getUSDCeValueForTokenShare{
+                value: msg.value
+            }(sharesConfig) * totalSupply();
     }
 
     function metaBuy(
         address from_,
-        uint256 fraxIn_,
-        uint256 amountOutMin_,
+        uint256 usdceIn_,
         bytes calldata signature_
-    ) external {
-        bytes32 functionDataHash = keccak256(
-            abi.encodePacked(fraxIn_, amountOutMin_)
-        );
-        bool validExecution = _master.executeMetaTx(
+    ) external payable {
+        bytes32 functionDataHash = keccak256(abi.encodePacked(usdceIn_));
+        bool validExecution = _orchestrator.executeMetaTx(
             from_,
             "buy",
             functionDataHash,
             signature_
         );
+
         require(
             validExecution,
             "Execution Failed; Invalidated by RelayManager"
         );
 
-        _buy(from_, fraxIn_, amountOutMin_);
-    }
+        uint256 lqt = _orchestrator
+            .radioFTSOinterface()
+            .getUSDCeValueForTokenShare{value: msg.value}(sharesConfig) *
+            totalSupply();
 
-    function _sell(
-        address seller_,
-        uint256 amountIn_,
-        uint256 fraxOutMin_
-    ) private updatePriceAndReserve {
-        require(amountIn_ > 0, "fraxIn must be greater than 0");
-        require(fraxOutMin_ > 0, "amountOutMin must be greater than 0");
+        uint256 fOut = (usdceIn_ / lqt) * totalSupply();
+        for (uint256 i = 0; i < sharesConfig.length; i++) {
+            if (sharesConfig[i] != 0) {
+                // This is where we would buy the underlying assets
+            }
+        }
 
-        uint256 fraxOut = calculateFraxOut(amountIn_);
-        require(fraxOut >= fraxOutMin_, "Slippage tolerance exceeded");
-
-        uint256 fee = fraxOut /
-            _feeController.pumpfaxtTokenBuySellFee_FRACTION();
-
-        _feeController.submitFee(seller_, fee, keccak256("sellPumpfaxtToken"));
-        _transfer(seller_, address(this), amountIn_);
-        pFRAX.transfer(seller_, fraxOut - fee);
-    }
-
-    function sell(uint256 amountIn_, uint256 fraxOutMin_) external {
-        _sell(msg.sender, amountIn_, fraxOutMin_);
-    }
-
-    function metaSell(
-        address from_,
-        uint256 amountIn_,
-        uint256 fraxOutMin_,
-        bytes calldata signature_
-    ) external {
-        bytes32 functionDataHash = keccak256(
-            abi.encodePacked(amountIn_, fraxOutMin_)
-        );
-        bool validExecution = _master.executeMetaTx(
-            from_,
-            "sell",
-            functionDataHash,
-            signature_
-        );
-        require(
-            validExecution,
-            "Execution Failed; Invalidated by RelayManager"
-        );
-
-        _sell(from_, amountIn_, fraxOutMin_);
+        _mint(msg.sender, fOut);
     }
 }
