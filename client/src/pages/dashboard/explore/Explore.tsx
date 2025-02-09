@@ -5,7 +5,6 @@ import Icon from "../../../shared/components/Icon";
 import Link from "../../../shared/components/Link";
 import ImageCard from "./ImageCard";
 
-type Props = {}
 
 const fundItems = [
     {
@@ -31,7 +30,7 @@ const fundItems = [
     }
 ]
 
-export default function Explore({ }: Props) {
+export default function Explore() {
     return (
         <div className="relative min-h-screen w-full flex bg-grey-50">
             <Sidebar />

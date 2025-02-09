@@ -1,8 +1,7 @@
 import { Button, Form, Input, Textarea } from "@heroui/react";
 
-type Props = {}
 
-function SendMessage({ }: Props) {
+function SendMessage() {
     return (
         <Form
             className="flex flex-col w-full gap-4"

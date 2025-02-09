@@ -8,8 +8,6 @@ import Link from "../../../shared/components/Link";
 import HoldersDetails from "./HoldersDetails";
 
 
-type Props = {}
-
 const item = {
     id: 1,
     name: "BTC-ETH Risk Fund",
@@ -32,7 +30,7 @@ const renderChart = {
     ],
 }
 
-export default function FundDetail({ }: Props) {
+export default function FundDetail() {
 
 
     return (
