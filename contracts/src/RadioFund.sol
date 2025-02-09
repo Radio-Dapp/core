@@ -8,7 +8,9 @@ import "./testUSDCe.sol";
 
 contract RadioFund is ERC20 {
     testUSDCe public immutable USDCe;
-    uint256 public immutable one_pFrax;
+    uint256 public immutable one_usdc;
+
+    uint8[] public sharesConfig;
 
     uint256 private _virtualReserve;
     uint256 private _tokenPrice;
@@ -19,61 +21,33 @@ contract RadioFund is ERC20 {
 
     RadioOrchestrator private _orchestrator;
 
-    modifier updatePriceAndReserve() {
+    modifier onlyCreator() {
+        require(msg.sender == _creator, "Only Creator");
         _;
-
-        _tokenPrice = (reserve() * one_pFrax) / supply();
-
-        if (_virtualReserve > 0 && reserve() >= 3 * _virtualReserve) {
-            uint256 exactRatioPercentage = (_virtualReserve * 100) / supply();
-            _virtualReserve = 0;
-            uint256 supplyToBurn = (supply() * exactRatioPercentage) / 100;
-            _burn(address(this), supplyToBurn);
-        }
     }
 
     constructor(
         address creator_,
         string memory name_,
-        string memory symbol_,
-        string memory uri_
-    ) ERC20(name_, symbol_) updatePriceAndReserve {
-        _master = IPumpfaxtMaster(msg.sender);
+        string memory symbol_
+    ) ERC20(name_, symbol_) {
+        _orchestrator = RadioOrchestrator(msg.sender);
 
-        pFRAX = _master.pFrax();
-        _decimals = pFRAX.decimals();
-        one_pFrax = _master.one_pFrax();
-
-        _feeController = _master.feeController();
+        USDCe = _orchestrator.USDCe();
+        one_usdc = _orchestrator.one_usdc();
 
         _creator = creator_;
-        _uri = uri_;
-
-        _mint(
-            address(this),
-            _master.newTokenStartingSupply() * (10 ** _decimals)
-        );
-        _virtualReserve = _master.newTokenStartingVirtualReserve() * one_pFrax;
     }
 
-    function decimals() public view override returns (uint8) {
-        return _decimals;
-    }
-
-    function uri() public view returns (string memory) {
-        return _uri;
-    }
-
-    function supply() public view returns (uint256) {
-        return balanceOf(address(this));
-    }
-
-    function reserve() public view returns (uint256) {
-        return _virtualReserve + liquidity();
-    }
+    function setConfig(uint8[] memory sharesConfig_) public onkyCreator {
+        require(sharesConfig_.length == _orchestrator.radioFTSOinterface.totalTokens(), "Invalid config");
+for (uint256 i = 0; i < sharesConfig_.length; i++) {
+        }
 
     function liquidity() public view returns (uint256) {
-        return pFRAX.balanceOf(address(this));
+        return
+            _orchestrator.radioFTSOinterface.getUSDCeValueForTokenShare(sharesConfig) *
+            totalSupply();
     }
 
     function tokenPrice() public view returns (uint256) {

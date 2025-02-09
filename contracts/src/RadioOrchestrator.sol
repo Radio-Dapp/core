@@ -11,6 +11,7 @@ contract RadioOrchestrator is Ownable {
     testUSDCe public immutable USDCe;
 
     RelayManager public immutable relayManager;
+    RadioFTSOinterface public immutable radioFTSOinterface;
 
     uint256 public immutable one_usdc;
 
@@ -29,6 +30,7 @@ contract RadioOrchestrator is Ownable {
         one_usdc = 10 ** USDCe.decimals();
 
         relayManager = new RelayManager();
+        radioFTSOinterface = new RadioFTSOinterface();
 
         // feeController = new ();
     }
@@ -51,13 +53,8 @@ contract RadioOrchestrator is Ownable {
         string memory symbol_,
         string memory uri_
     ) private {
-        PumpfaxtToken newToken = new PumpfaxtToken(
-            creator_,
-            name_,
-            symbol_,
-            uri_
-        );
-        fundCreatedAtBlockNumber[address(newToken)] = block.number;
+        RadioFund newFund = new RadioFund(creator_, name_, symbol_);
+        fundCreatedAtBlockNumber[address(newFund)] = block.number;
     }
 
     function metaCreateFund(
@@ -119,5 +116,9 @@ contract RadioOrchestrator is Ownable {
         );
 
         return valid;
+    }
+
+    function faucetUSDCe(address to_, uint256 amount_) external onlyOwner {
+        USDCe.mintTo(to_, amount_);
     }
 }
