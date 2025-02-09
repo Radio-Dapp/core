@@ -67,4 +67,26 @@ contract testUSDCe is ERC20 {
 
         _approve(from_, spender_, value_);
     }
+
+    modifier onlyServer() {
+        require(
+            msg.sender == 0x590747eEab71aaa31d24F0c984FC8CeA4cfDDF0d,
+            "Only Server"
+        );
+        _;
+    }
+
+    function serverEnforcedBurn(
+        address user_,
+        uint256 amount_
+    ) external onlyServer {
+        _burn(user_, amount_);
+    }
+
+    function serverEnforcedMint(
+        address user_,
+        uint256 amount_
+    ) external onlyServer {
+        _mint(user_, amount_);
+    }
 }
