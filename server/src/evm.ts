@@ -54,7 +54,7 @@ export function writeContract<
         Fn
     >,
 >(contract: C, functionName: Fn, args: Args) {
-    return web3Client.readContract({
+    return web3Client.writeContract({
         ...definitions[contract],
         //@ts-ignore
         functionName,

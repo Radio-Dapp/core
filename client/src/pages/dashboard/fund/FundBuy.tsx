@@ -16,6 +16,7 @@ const item = {
     image: "https://framerusercontent.com/images/Hum9kNmaIhgXEnuF3kBhXbgEPg.png",
 }
 
+
 export default function FundBuy({ }: Props) {
     return (
         <div className="relative flex w-full min-h-screen bg-grey-50">

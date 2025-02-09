@@ -1,5 +1,7 @@
-import { Form, Input, Button, Textarea } from "@heroui/react";
+import { Form, Input, Button } from "@heroui/react";
 import Icon from "../../../shared/components/Icon";
+import useSignWithPrivy from "../../../shared/hooks/useSignWithPrivy";
+import { axiosClient } from "../../../config";
 
 interface Props {
     item: {
@@ -14,17 +16,45 @@ interface Props {
 }
 
 function BuyFundForm(props: Props) {
-    async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    const { activeWallet, signWithPrivy, ready } = useSignWithPrivy();
+
+    async function approveUSDC() {
+        if(!ready || !activeWallet) {
+            console.log("Wallet not ready");
+            return;
+        }
+
+        const res = await axiosClient.post("/funds/approve", {
+            amount: 1000000,
+            spender: activeWallet?.address,
+        })
+
+        return res.data;
+    }
+
+    async function handleBuy(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        let data = Object.fromEntries(new FormData(e.currentTarget));
-        console.log({ data });
+
+        // const response = await approveUSDC();
+        // console.log(response);
+
+        // return;
+        const data = Object.fromEntries(new FormData(e.currentTarget));
+
+        if(!ready) {
+            console.log("Wallet not ready");
+            return;
+        };
+
+        const signature = await signWithPrivy(JSON.stringify(data));
+        console.log({signature, id: props.item.id});
     }
 
     return (
         <Form
             className="flex flex-col w-full gap-4 mt-4"
             validationBehavior="native"
-            onSubmit={handleSubmit}
+            onSubmit={handleBuy}
         >
             <div className="flex items-center w-full gap-2 mt-4 text-muted">
                 <Icon name="ShoppingBasket" className="w-5" />
@@ -37,8 +67,10 @@ function BuyFundForm(props: Props) {
                 <Input
                     isRequired
                     label="Amount"
-                    name="name"
-                    type="text"
+                    name="amount"
+                    type="number"
+                    min={0}
+                    max={9999999999}
                     variant="bordered"
                     placeholder="Enter amound in FUSD"
                     labelPlacement="outside"
