@@ -5,7 +5,6 @@ import {
     ModalHeader,
     ModalBody,
     ModalFooter,
-    useDisclosure
 } from "@heroui/react";
 import { generateRandomHash } from "../lib/utils";
 import useSignWithPrivy from "../hooks/useSignWithPrivy";
@@ -19,7 +18,6 @@ type Props = {
 export default function ApprovalModal({
     isOpen,
     onOpenChange,
-    onOpen,
 }: Props) {
     const { signWithPrivy } = useSignWithPrivy();
 

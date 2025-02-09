@@ -44,7 +44,7 @@ export default function HoldersDetails() {
     }, [page]);
 
     return (
-        <Card className="flex-row justify-between w-full p-4 mt-6 border rounded-sm bg-grey-100 border-border/70 max-w-md sm:max-w-lg md:max-w-none">
+        <Card className="flex-row justify-between w-full p-4 mt-6 border rounded-sm bg-grey-100 border-border/70 text-grey-700 max-w-md sm:max-w-lg md:max-w-none">
             <div className="w-full">
                 <CardHeader className="flex-col items-start">
                     <h2 className="font-bold">Funds Holders</h2>

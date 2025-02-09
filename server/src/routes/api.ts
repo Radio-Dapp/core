@@ -8,7 +8,7 @@ import { getTransactionReceipt } from "viem/_types/actions/public/getTransaction
 
 const router = new Hono().basePath("/api");
 
-router.get("/usdc-approved", async (c) => {
+router.get("/check-approval", async (c) => {
   try {
     const address = c.req.query("address");
     const res = await UserModel.findOne({ address });
@@ -145,10 +145,10 @@ router.get("/get-funds", async (c) => {
   }
 });
 
-router.get("/get-fund-by-id", async (c) => {
+router.get("/get-fund", async (c) => {
   try {
-    const id = c.req.query("id");
-    const fund = await FundsModel.findById(id);
+    const address = c.req.query("address");
+    const fund = await FundsModel.findOne({ address });
     return c.json(fund);
   } catch (error) {
     console.error("Error processing request:", error);

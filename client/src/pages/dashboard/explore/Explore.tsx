@@ -5,6 +5,7 @@ import Icon from "../../../shared/components/Icon";
 import Link from "../../../shared/components/Link";
 import ImageCard from "./ImageCard";
 import useFetch from "../../../shared/hooks/useFetch";
+import { IFunds } from "../../../shared/types/dashboard";
 
 export default function Explore() {
     const { data, loading } = useFetch<IFunds[]>("/api/get-funds");

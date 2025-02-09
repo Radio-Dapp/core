@@ -2,6 +2,7 @@ import { Input, Autocomplete, AutocompleteItem, Avatar, Button } from "@heroui/r
 import Icon from "../../../shared/components/Icon";
 import { cn } from "../../../shared/lib/tailwind";
 import useFetch from "../../../shared/hooks/useFetch";
+import { Field, TokenItem } from "../../../shared/types/dashboard";
 
 interface Props {
     fields: Field[];

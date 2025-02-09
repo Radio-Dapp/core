@@ -6,34 +6,24 @@ import Icon from "../../../shared/components/Icon";
 import useSignWithPrivy from "../../../shared/hooks/useSignWithPrivy";
 import ApprovalModal from "../../../shared/components/ApprovalModal";
 import { generateRandomHash } from "../../../shared/lib/utils";
-
-interface Props {
-    item: {
-        id: number,
-        name: string,
-        tag: string,
-        minimumInvestment: number,
-        maximumInvestment: number,
-        description: string,
-        image: string,
-    }
-}
+import { axiosClient } from "../../../config";
 
 function BuyFundForm() {
-    const { signWithPrivy, ready } = useSignWithPrivy();
+    const { signWithPrivy, activeWallet } = useSignWithPrivy();
     const { isOpen, onOpenChange, onOpen } = useDisclosure();
-    let approvalStatus = true;
 
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
 
-        if (!ready) {
+        if (!activeWallet) {
             console.log("Wallet not ready");
             return;
         };
 
         // check approval status
-        if (!approvalStatus) {
+        const res = await axiosClient.get(`/api/check-approval?address=${activeWallet.address}`);
+
+        if (!res.data.usdcApproved) {
             onOpenChange();
             return;
         }

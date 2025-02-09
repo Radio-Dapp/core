@@ -1,4 +1,5 @@
 import { truncateString } from "../../../shared/lib/utils";
+import { IFunds } from "../../../shared/types/dashboard";
 
 type Props = {
     item: IFunds;

@@ -1,5 +1,8 @@
+import { Address } from "viem";
+
 interface Field {
     id: number;
+    name?: string;
     symbol: string | undefined;
     percentage: number | undefined;
 }
@@ -20,7 +23,7 @@ interface IFunds extends Document {
     type: string;
     image?: string;
     symbol: string;
-    address: string;
+    address: Address;
     description: string;
     minimum_investment: string;
     maximum_investment: string;
