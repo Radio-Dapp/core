@@ -1,5 +1,4 @@
 import {
-    createPublicClient,
     createWalletClient,
     http,
     publicActions,

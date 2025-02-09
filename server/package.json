@@ -22,7 +22,7 @@
     "devDependencies": {
         "@types/chai": "^4.2.0",
         "@types/mocha": ">=9.1.0",
-        "@types/node": "^20.11.17",
+        "@types/node": "^22.13.1",
         "tsx": "^4.7.1"
     }
 }

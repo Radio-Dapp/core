@@ -3,10 +3,11 @@ import { serve } from "@hono/node-server";
 import { Hono } from "hono";
 import { flare, data, funds } from "./routes/index.js";
 import mongoose from "mongoose";
-
+import { cors } from 'hono/cors'
 
 const MONG_URI = process.env.MONG_URI;
 const app = new Hono();
+app.use('/*', cors());
 
 mongoose
   .connect(MONG_URI)

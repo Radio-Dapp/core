@@ -5,8 +5,6 @@ import TokenSelect from "./TokenSelect";
 
 interface Props {}
 
-
-
 function CreateFundForm(props: Props) {
     const [fields, setFields] = useState<Field[]>([{
         id: 1,
