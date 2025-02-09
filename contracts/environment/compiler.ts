@@ -1,10 +1,10 @@
-import solc from "npm:solc@0.8.19";
+import solc from "npm:solc";
 import { resolve } from "jsr:@std/path";
 import { consoleFmt } from "../utils.ts";
 
 const PATHS = {
-  SOURCES: "src/main",
-  MODULES: "../../node_modules",
+  SOURCES: "src",
+  MODULES: "./node_modules",
   OUTPUT_DIR: ".",
 };
 
@@ -28,9 +28,6 @@ const input = {
   language: "Solidity",
   sources,
   settings: {
-    evmVersion: "london",
-    optimizer: { enabled: true, runs: 1000 },
-    viaIR: true,
     outputSelection: {
       "*": {
         "*": ["*"],
@@ -76,7 +73,6 @@ for (const fileName of contractNames) {
     )
   ) {
     const contractDefinition = contractDefinitions[contractName];
-
     if (contractDefinition) {
       abiEntries.push(
         `${contractName}: ${

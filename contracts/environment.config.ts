@@ -1,4 +1,3 @@
-import "jsr:@std/dotenv/load";
 import type * as chains from "viem/chains";
 import type { Chain, Hash } from "viem";
 
@@ -11,19 +10,13 @@ export type EnvironmentConfig = {
   accounts: Hash[];
 };
 
-const acc1Key = Deno.env.get("ACC1");
-if (!(acc1Key && acc1Key.startsWith("0x"))) {
-  throw new Error("ACC1 is not a valid address");
-}
-
 const environmentConfig: EnvironmentConfig = {
   networks: {
-    default: "flareTestnet",
-    viem: ["flareTestnet"],
+    default: "hardhat",
+    viem: ["hardhat"],
     custom: {},
   },
   accounts: [
-    acc1Key as "0x",
     "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80",
     "0x59c6995e998f97a5a0044966f0945389dc9e86dae88c7a8412f4603b6b78690d",
     "0x5de4111afa1a4b94908f83103eb1f1706367c2e68ca870fc3fb9a804cdab365a",

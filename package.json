@@ -1,9 +1,7 @@
 {
     "workspaces": [
-        "./contracts",
         "./server",
         "./client",
-        "./xrp"
     ],
     "private": true
 }

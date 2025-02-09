@@ -11,7 +11,6 @@ import {
 } from "../definitions.gen.ts";
 import { expect } from "@std/expect";
 import environmentState_ from "./environment.tmp.json" with { type: "json" };
-import { ercWithDeposit } from "./rockAbis.ts";
 
 // deno-lint-ignore no-explicit-any
 const environmentState = environmentState_ as any;
@@ -117,11 +116,9 @@ async function tx(
           clearInterval(id);
           resolve(receipt);
         }
-      //deno-lint-ignore no-explicit-any
-      } catch (error: any) {
-        if (!error.message.includes("could not be found")) {
-          reject(error);
-        }
+      } catch (error) {
+        clearInterval(id);
+        reject(error);
       }
     }, 100);
   });
@@ -137,7 +134,6 @@ async function deployContract<
   args: T["args"],
   parameters?: Omit<T, "bytecode" | "abi">,
 ) {
-  console.log("deploying contract", contractName);
   const txnRcpt = await tx(
     deployer.deployContract({
       abi: abiDefinitions[contractName],
@@ -149,19 +145,10 @@ async function deployContract<
   );
 
   if (!txnRcpt.contractAddress) throw new Error("Failed to deploy contract");
+
   const contract = viem.getContract({
     abi: abiDefinitions[contractName],
     address: txnRcpt.contractAddress,
-    client: deployer,
-  });
-
-  return contract;
-}
-
-function getContractERC(address: Address) {
-  const contract = viem.getContract({
-    abi: ercWithDeposit,
-    address: address,
     client: deployer,
   });
 
@@ -227,7 +214,6 @@ async function readContractEvents<
 
 const runtime = {
   clients,
-  tx,
   publicClient,
   loadFixture,
   block,
@@ -235,7 +221,6 @@ const runtime = {
   deployContract,
   readContractEvents,
   getContract,
-  getContractERC,
   sleep,
   expectContractFunctionExecutionError,
 };
