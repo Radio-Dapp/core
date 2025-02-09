@@ -44,13 +44,9 @@ export default function Faucet() {
               You can request
 
               <span className="text-primary px-1 ">
-                100 FM
+                100 USDC
               </span>
-              tokens for the Coston testnet per address in
-
-              <span className="text-primary pl-1">
-                24 hours
-              </span>.
+              tokens at a time, and you will recieve them on Coston Testnet 2.
             </p>
             <Input className="mt-10 max-w-sm" variant="bordered" label="Address" />
             <Button className="mt-5 rounded-sm font-semibold" variant="shadow" color="primary">

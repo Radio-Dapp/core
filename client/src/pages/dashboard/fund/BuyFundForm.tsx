@@ -26,14 +26,14 @@ function BuyFundForm() {
 
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        
+
         if (!ready) {
             console.log("Wallet not ready");
             return;
         };
 
         // check approval status
-        if(!approvalStatus) {
+        if (!approvalStatus) {
             onOpenChange();
             return;
         }
