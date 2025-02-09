@@ -3,9 +3,8 @@ import Sidebar from "../Sidebar"
 import TopNav from "../TopNav";
 import CreateFundForm from "./CreateFundForm";
 
-type Props = {}
 
-export default function Create({ }: Props) {
+export default function Create() {
     return (
         <div className="relative min-h-screen w-full flex bg-grey-50">
             <Sidebar />

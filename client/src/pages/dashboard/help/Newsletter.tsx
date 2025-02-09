@@ -1,8 +1,7 @@
 import { Button, Form, Input } from "@heroui/react";
 
-type Props = {}
 
-function Newsletter({ }: Props) {
+function Newsletter() {
     return (
         <Form
             className="flex flex-col w-full gap-4"

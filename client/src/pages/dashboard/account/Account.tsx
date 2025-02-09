@@ -4,9 +4,8 @@ import TopNav from "../TopNav";
 import Link from "../../../shared/components/Link";
 import { truncateString } from "../../../shared/lib/utils";
 
-type Props = {}
 
-export default function Account({ }: Props) {
+export default function Account() {
     return (
         <div className="relative flex w-full min-h-screen bg-grey-50">
             <Sidebar />

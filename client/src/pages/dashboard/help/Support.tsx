@@ -5,9 +5,8 @@ import { Button } from "@heroui/react";
 import SendMessage from "./SendMessage";
 import Newsletter from "./Newsletter";
 
-type Props = {}
 
-export default function Support({ }: Props) {
+export default function Support(){
     return (
         <div className="relative flex w-full min-h-screen bg-grey-50">
             <Sidebar />

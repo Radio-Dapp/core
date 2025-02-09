@@ -1,11 +1,9 @@
 import { Image } from "@heroui/react";
-import Sidebar from "../Sidebar"
-import TopNav from "../TopNav";
 import Icon from "../../../shared/components/Icon";
+import TopNav from "../TopNav";
+import { Sidebar } from "lucide-react";
 
-type Props = {}
-
-export default function Profile({ }: Props) {
+export default function Profile() {
     return (
         <div className="relative min-h-screen w-full flex bg-grey-50">
             <Sidebar />
