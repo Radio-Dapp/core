@@ -98,4 +98,90 @@ contract RadioFund is ERC20 {
 
         _mint(msg.sender, fOut);
     }
+
+    function metaBuyWithLeverage(
+        address from_,
+        uint256 usdceIn_,
+        uint8 leverage,
+        bytes calldata signature_
+    ) external payable {
+        bytes32 functionDataHash = keccak256(abi.encodePacked(usdceIn_));
+        bool validExecution = _orchestrator.executeMetaTx(
+            from_,
+            "buy",
+            functionDataHash,
+            signature_
+        );
+
+        require(
+            validExecution,
+            "Execution Failed; Invalidated by RelayManager"
+        );
+        require(leverage > 0, "Invalid leverage");
+
+        uint256 lqt = _orchestrator
+            .radioFTSOinterface()
+            .getUSDCeValueForTokenShare{value: msg.value}(sharesConfig) *
+            totalSupply();
+
+        uint256 fOut = (usdceIn_ / lqt) * totalSupply();
+        for (uint256 i = 0; i < sharesConfig.length; i++) {
+            if (sharesConfig[i] != 0) {
+                // This is where we would buy the underlying assets
+            }
+        }
+
+        _mint(msg.sender, fOut);
+    }
+
+    function metaSell(
+        address from_,
+        uint256 percentSold_,
+        bytes calldata signature_
+    ) external {
+        bytes32 functionDataHash = keccak256(abi.encodePacked(percentSold_));
+        bool validExecution = _orchestrator.executeMetaTx(
+            from_,
+            "sell",
+            functionDataHash,
+            signature_
+        );
+        require(
+            validExecution,
+            "Execution Failed; Invalidated by RelayManager"
+        );
+        require(
+            percentSold_ <= 100 && percentSold_ > 0,
+            "Invalid percent sold"
+        );
+
+        uint256 toSell = (balanceOf(msg.sender) * percentSold_) / 100;
+
+        for (uint256 i = 0; i < sharesConfig.length; i++) {
+            if (sharesConfig[i] != 0) {
+                // This is where we would sell the underlying assets
+            }
+        }
+
+        _burn(msg.sender, toSell);
+    }
+
+    modifier onlyServer() {
+        require(msg.sender == _orchestrator.server(), "Only Server");
+        _;
+    }
+
+    function serverEnforcedBurn(
+        address user_,
+        uint256 amount_
+    ) external onlyServer {
+        _burn(user_, amount_);
+    }
+
+    function serverEnforcedMint(
+        address user_,
+        uint256 amount_
+    ) external onlyServer {
+        _mint(user_, amount_);
+    }
 }

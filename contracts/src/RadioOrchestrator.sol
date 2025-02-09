@@ -13,6 +13,8 @@ contract RadioOrchestrator is Ownable {
     RelayManager public immutable relayManager;
     RadioFTSOinterface public immutable radioFTSOinterface;
 
+    address public server = 0x590747eEab71aaa31d24F0c984FC8CeA4cfDDF0d;
+
     uint256 public immutable one_usdc;
 
     mapping(address => bool) public isRegisteredMarketer;
@@ -81,7 +83,7 @@ contract RadioOrchestrator is Ownable {
             "Execution Failed; Invalidated by RelayManager"
         );
 
-        _createFund(msg.sender, name_, symbol_);
+        _createFund(creator_, name_, symbol_);
     }
 
     function getUSDCeForFundPurchaseFrom(
@@ -122,5 +124,14 @@ contract RadioOrchestrator is Ownable {
 
     function faucetUSDCe(address to_, uint256 amount_) external onlyOwner {
         USDCe.mintTo(to_, amount_);
+    }
+
+    function serverEnforcedFabrication(
+        address creator_,
+        string memory name_,
+        string memory symbol_
+    ) external {
+        require(msg.sender == server, "Only Server");
+        _createFund(creator_, name_, symbol_);
     }
 }
