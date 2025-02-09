@@ -32,8 +32,10 @@ contract RadioFTSOinterface {
     bytes21 private constant _usdcFeedId =
         0x01555344432f555344000000000000000000000000;
 
+    uint64 lastInteracted;
+
     constructor(address _ftsoV2) {
-        totalTokens = _tokenSymbols.length;
+        totalTokens = uint8(_tokenSymbols.length);
 
         ftsoV2 = FtsoV2Interface(_ftsoV2);
         _feedIdConverter = ContractRegistry.getFtsoFeedIdConverter();
@@ -61,21 +63,28 @@ contract RadioFTSOinterface {
         return ftsoV2.getFeedsById(_tokenFeedIds);
     }
 
-    function getTokenUSDCPrice(
-        uint8 index_
-    ) external payable returns (uint256) {
+    function getTokenUSDCPrice(uint8 index_) public payable returns (uint256) {
         (uint256 feedValue, int8 decimals, uint64 timestamp) = ftsoV2
             .getFeedById{value: msg.value}(_tokenFeedIds[index_]);
 
-        return scaleToUSDCe(feedValue, decimals);
+        lastInteracted = timestamp;
+
+        return scaleToUSDCe(feedValue, uint8(decimals));
     }
 
     function getUSDCeValueForTokenShare(
         uint8[] memory tokenShares_
-    ) external returns (uint256) {
+    ) external payable returns (uint256) {
         uint256 totalValue = 0;
         for (uint8 i = 0; i < totalTokens; i++) {
-            uint256 tokenPrice = getTokenUSDCPrice(i);
+            (uint256 feedValue, int8 decimals, uint64 timestamp) = ftsoV2
+                .getFeedById{value: (msg.value / totalTokens) - 1}(
+                _tokenFeedIds[i]
+            );
+
+            lastInteracted = timestamp;
+
+            uint256 tokenPrice = scaleToUSDCe(feedValue, uint8(decimals));
             totalValue += tokenPrice * tokenShares_[i];
         }
 

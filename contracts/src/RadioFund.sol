@@ -2,13 +2,12 @@
 pragma solidity ^0.8.26;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "./interfaces/IPumpfaxtMaster.sol";
+import "./RadioOrchestrator.sol";
 import "./interfaces/IRelayManager.sol";
-import "./interfaces/IPumpfaxtFeeController.sol";
-import "./interfaces/IPFrax.sol";
+import "./testUSDCe.sol";
 
-contract PumpfaxtToken is ERC20 {
-    IPFrax public immutable pFRAX;
+contract RadioFund is ERC20 {
+    testUSDCe public immutable USDCe;
     uint256 public immutable one_pFrax;
 
     uint256 private _virtualReserve;
@@ -17,10 +16,8 @@ contract PumpfaxtToken is ERC20 {
     uint8 private immutable _decimals;
 
     address _creator;
-    string private _uri;
 
-    IPumpfaxtMaster private _master;
-    IPumpfaxtFeeController private _feeController;
+    RadioOrchestrator private _orchestrator;
 
     modifier updatePriceAndReserve() {
         _;
