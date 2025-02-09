@@ -11,7 +11,6 @@ import Faucet from "./pages/dashboard/faucet/Faucet";
 import FundDetail from "./pages/dashboard/fund/FundDetail";
 import FundBuy from "./pages/dashboard/fund/FundBuy";
 import Home from "./pages/dashboard/home/Home";
-import Stargate from "./pages/dashboard/stargate/Stargate";
 
 export default function App() {
   return (
@@ -25,7 +24,6 @@ export default function App() {
       {/* Dashboard Routes */}
       <Route path="dashboard">
         <Route path="home" element={<Home />} />
-        <Route path="stargate" element={<Stargate />} />
         <Route path="explore" element={<Explore />} />
         <Route path="create" element={<Create />} />
         <Route path="account" element={<Account />} />

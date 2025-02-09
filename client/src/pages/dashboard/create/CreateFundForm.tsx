@@ -2,6 +2,8 @@ import { Form, Input, Button, Textarea } from "@heroui/react";
 import Icon from "../../../shared/components/Icon";
 import React, { useState } from "react";
 import TokenSelect from "./TokenSelect";
+import { axiosClient } from "../../../config";
+import useSignWithPrivy from "../../../shared/hooks/useSignWithPrivy";
 
 
 function CreateFundForm() {
@@ -12,11 +14,26 @@ function CreateFundForm() {
         percentage: undefined
     }]);
     const [totalPercentage, setTotalPercentage] = useState<number>(0);
+    const { activeWallet } = useSignWithPrivy()
 
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         const data = Object.fromEntries(new FormData(e.currentTarget));
-        console.log({ data });
+
+        const reqObj = {
+            meta: {
+                name: data.name,
+                type: data.type,
+                description: data.description,
+                minimum_investment: data.minimum_investment,
+                maximum_investment: data.maximum_investment,
+                creator: activeWallet?.address
+            },
+            assets: fields
+        }
+
+        const res = await axiosClient.post("/api/create", reqObj)
+        console.log(res.data)
     }
 
     return (

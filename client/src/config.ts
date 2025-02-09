@@ -36,7 +36,7 @@ export const apolloClient = new ApolloClient({
 });
 
 export const axiosClient = axios.create({
-  baseURL: import.meta.env.VITE_SERVER_URL,
+  baseURL: SERVER_URL,
   timeout: 32_000,
   headers: {
     "Content-Type": "application/json",

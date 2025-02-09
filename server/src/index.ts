@@ -1,7 +1,7 @@
 import "dotenv/config";
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";
-import { flare, data, funds } from "./routes/index.js";
+import { flare, data, funds, api } from "./routes/index.js";
 import mongoose from "mongoose";
 import { cors } from 'hono/cors'
 
@@ -24,6 +24,7 @@ app.get("/", (c) => {
 
 app.route("/", flare);
 app.route("/", funds);
+app.route("/", api);
 
 app.route("/", data)
 

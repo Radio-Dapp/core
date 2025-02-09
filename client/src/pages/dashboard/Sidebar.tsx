@@ -19,11 +19,6 @@ const sidebarItems: sidebarItems[] = [
     to: "/dashboard/home",
   },
   {
-    name: "Stargate",
-    iconName: "Star",
-    to: "/dashboard/stargate",
-  },
-  {
     name: "Explore",
     iconName: "Telescope",
     to: "/dashboard/explore",

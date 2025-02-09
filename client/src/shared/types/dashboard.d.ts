@@ -1,6 +1,5 @@
 interface Field {
     id: number;
-    name: string | undefined;
     symbol: string | undefined;
     percentage: number | undefined;
 }
