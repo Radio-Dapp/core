@@ -5,7 +5,6 @@ import TopNav from "../TopNav";
 import { Card, CardHeader, CardFooter, Image, Button } from "@heroui/react";
 
 export default function Home() {
-
     return (
         <div className="flex w-full min-h-screen bg-grey-50">
             <Sidebar />

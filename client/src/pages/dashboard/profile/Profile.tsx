@@ -1,7 +1,7 @@
 import { Image } from "@heroui/react";
 import Icon from "../../../shared/components/Icon";
 import TopNav from "../TopNav";
-import { Sidebar } from "lucide-react";
+import Sidebar from "../Sidebar";
 
 export default function Profile() {
     return (

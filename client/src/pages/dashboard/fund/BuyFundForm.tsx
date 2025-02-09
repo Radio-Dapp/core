@@ -1,85 +1,94 @@
-import { Form, Input, Button } from "@heroui/react";
+import {
+    Form, Input, Button,
+    useDisclosure
+} from "@heroui/react";
 import Icon from "../../../shared/components/Icon";
 import useSignWithPrivy from "../../../shared/hooks/useSignWithPrivy";
-import { axiosClient } from "../../../config";
+import ApprovalModal from "../../../shared/components/ApprovalModal";
+import { generateRandomHash } from "../../../shared/lib/utils";
+
+interface Props {
+    item: {
+        id: number,
+        name: string,
+        tag: string,
+        minimumInvestment: number,
+        maximumInvestment: number,
+        description: string,
+        image: string,
+    }
+}
 
 function BuyFundForm() {
-    const { activeWallet, signWithPrivy, ready } = useSignWithPrivy();
+    const { signWithPrivy, ready } = useSignWithPrivy();
+    const { isOpen, onOpenChange, onOpen } = useDisclosure();
+    let approvalStatus = true;
 
-    async function approveUSDC() {
-        if(!ready || !activeWallet) {
-            console.log("Wallet not ready");
-            return;
-        }
-
-        const res = await axiosClient.post("/funds/approve", {
-            amount: 1000000,
-            spender: activeWallet?.address,
-        })
-
-        return res.data;
-    }
-
-    async function handleBuy(e: React.FormEvent<HTMLFormElement>) {
+    async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-
-        // const response = await approveUSDC();
-        // console.log(response);
-
-        // return;
-        const data = Object.fromEntries(new FormData(e.currentTarget));
-
-        if(!ready) {
+        
+        if (!ready) {
             console.log("Wallet not ready");
             return;
         };
 
-        const signature = await signWithPrivy(JSON.stringify(data));
-        console.log({signature, id: props.item.id});
+        // check approval status
+        if(!approvalStatus) {
+            onOpenChange();
+            return;
+        }
+
+        const data = Object.fromEntries(new FormData(e.currentTarget));
+        const signature = await signWithPrivy(generateRandomHash(32));
+        console.log(signature);
+
+        console.log(data);
+        return;
     }
 
-    // const { item } = props
     return (
-        <Form
-            className="flex flex-col w-full gap-4 mt-4"
-            validationBehavior="native"
-            onSubmit={handleBuy}
-        >
-            <div className="flex items-center w-full gap-2 mt-4 text-muted">
-                <Icon name="ShoppingBasket" className="w-5" />
-                <p className="">
-                    Buy Fund
-                </p>
-            </div>
+        <div>
+            <ApprovalModal onOpen={onOpen} isOpen={isOpen} onOpenChange={onOpenChange} />
 
-            <div className="w-full p-6 border flex flex-col gap-4 bg-grey-0 border-border/80 rounded-sm">
-                <Input
-                    isRequired
-                    label="Amount"
-                    name="amount"
-                    type="number"
-                    min={0}
-                    max={9999999999}
-                    variant="bordered"
-                    placeholder="Enter amound in FUSD"
-                    labelPlacement="outside"
-                    classNames={{
-                        inputWrapper: "h-[3rem] border rounded-sm border-border/60 bg-grey-100",
-                        label: "pb-2 z-0"
-                    }}
-                />
+            <Form
+                className="flex flex-col w-full gap-4 mt-4"
+                validationBehavior="native"
+                onSubmit={handleSubmit}
+            >
+                <div className="flex items-center w-full gap-2 mt-4 text-muted">
+                    <Icon name="ShoppingBasket" className="w-5" />
+                    <p className="">
+                        Buy Fund
+                    </p>
+                </div>
 
-                <Button
-                    variant="flat"
-                    color="primary"
-                    type="submit"
-                    className="rounded-sm font-semibold"
-                >
-                    Buy
-                </Button>
-            </div>
+                <div className="w-full p-6 border flex flex-col gap-4 bg-grey-0 border-border/80 rounded-sm">
+                    <Input
+                        isRequired
+                        label="Amount"
+                        name="amount"
+                        type="number"
+                        min={0}
+                        max={9999999999}
+                        variant="bordered"
+                        placeholder="Enter amound in FUSD"
+                        labelPlacement="outside"
+                        classNames={{
+                            inputWrapper: "h-[3rem] border rounded-sm border-border/60 bg-grey-100",
+                            label: "pb-2 z-0"
+                        }}
+                    />
 
-        </Form>
+                    <Button
+                        variant="solid"
+                        type="submit"
+                        className="rounded-sm font-semibold bg-primary-700"
+                    >
+                        Buy
+                    </Button>
+                </div>
+            </Form>
+        </div>
     )
 }
 
