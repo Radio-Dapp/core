@@ -69,10 +69,7 @@ contract testUSDCe is ERC20 {
     }
 
     modifier onlyServer() {
-        require(
-            msg.sender == 0x590747eEab71aaa31d24F0c984FC8CeA4cfDDF0d,
-            "Only Server"
-        );
+        require(msg.sender == orchestrator.server(), "Only Server");
         _;
     }
 
