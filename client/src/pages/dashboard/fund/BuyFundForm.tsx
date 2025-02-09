@@ -1,49 +1,48 @@
 import { Form, Input, Button } from "@heroui/react";
 import Icon from "../../../shared/components/Icon";
-import useSignWithPrivy from "../../../shared/hooks/useSignWithPrivy";
-import { axiosClient } from "../../../config";
+// import useSignWithPrivy from "../../../shared/hooks/useSignWithPrivy";
+// import { axiosClient } from "../../../config";
 
 function BuyFundForm() {
-    const { activeWallet, signWithPrivy, ready } = useSignWithPrivy();
+    // const { activeWallet, signWithPrivy, ready } = useSignWithPrivy();
 
-    async function approveUSDC() {
-        if(!ready || !activeWallet) {
-            console.log("Wallet not ready");
-            return;
-        }
+    // async function approveUSDC() {
+    //     if(!ready || !activeWallet) {
+    //         console.log("Wallet not ready");
+    //         return;
+    //     }
 
-        const res = await axiosClient.post("/funds/approve", {
-            amount: 1000000,
-            spender: activeWallet?.address,
-        })
+    //     const res = await axiosClient.post("/funds/approve", {
+    //         amount: 1000000,
+    //         spender: activeWallet?.address,
+    //     })
 
-        return res.data;
-    }
+    //     return res.data;
+    // }
 
-    async function handleBuy(e: React.FormEvent<HTMLFormElement>) {
-        e.preventDefault();
+    // async function handleBuy(e: React.FormEvent<HTMLFormElement>) {
+    //     e.preventDefault();
 
-        // const response = await approveUSDC();
-        // console.log(response);
+    //     // const response = await approveUSDC();
+    //     // console.log(response);
 
-        // return;
-        const data = Object.fromEntries(new FormData(e.currentTarget));
+    //     // return;
+    //     const data = Object.fromEntries(new FormData(e.currentTarget));
 
-        if(!ready) {
-            console.log("Wallet not ready");
-            return;
-        };
+    //     if(!ready) {
+    //         console.log("Wallet not ready");
+    //         return;
+    //     };
 
-        const signature = await signWithPrivy(JSON.stringify(data));
-        console.log({signature, id: props.item.id});
-    }
+    //     const signature = await signWithPrivy(JSON.stringify(data));
+    //     console.log({signature, id: props.item.id});
+    // }
 
     // const { item } = props
     return (
         <Form
             className="flex flex-col w-full gap-4 mt-4"
             validationBehavior="native"
-            onSubmit={handleBuy}
         >
             <div className="flex items-center w-full gap-2 mt-4 text-muted">
                 <Icon name="ShoppingBasket" className="w-5" />
