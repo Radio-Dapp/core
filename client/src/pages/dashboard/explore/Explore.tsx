@@ -8,7 +8,7 @@ import useFetch from "../../../shared/hooks/useFetch";
 import { IFunds } from "../../../shared/types/dashboard";
 
 export default function Explore() {
-    const { data, loading } = useFetch<IFunds[]>("/api/get-funds");
+    const { data } = useFetch<IFunds[]>("/api/get-funds");
 
     return (
         <div className="relative min-h-screen w-full flex bg-grey-50">

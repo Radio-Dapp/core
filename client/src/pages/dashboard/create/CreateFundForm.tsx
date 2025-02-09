@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import TokenSelect from "./TokenSelect";
 import { axiosClient } from "../../../config";
 import useSignWithPrivy from "../../../shared/hooks/useSignWithPrivy";
-
+import { Field, TokenItem } from "../../../shared/types/dashboard";
 
 function CreateFundForm() {
     const [fields, setFields] = useState<Field[]>([{

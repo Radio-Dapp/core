@@ -8,7 +8,7 @@ import useFetch from "../../../shared/hooks/useFetch";
 
 export default function FundBuy() {
     const { fundId } = useParams();
-    const { data, loading } = useFetch<IFunds>(`/api/get-fund?address=${fundId}`);
+    const { data } = useFetch<IFunds>(`/api/get-fund?address=${fundId}`);
 
     return (
         <div className="relative flex w-full min-h-screen bg-grey-50">
