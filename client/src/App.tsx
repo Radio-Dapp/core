@@ -1,7 +1,6 @@
 import { Navigate, Route, Routes } from "react-router";
 import Error404 from "./pages/_404";
 import Landing from "./pages/landing/Landing";
-import Home from "./pages/dashboard/home/Home";
 import Explore from "./pages/dashboard/explore/Explore";
 import Create from "./pages/dashboard/create/Create";
 import Account from "./pages/dashboard/account/Account";
@@ -11,6 +10,8 @@ import Profile from "./pages/dashboard/profile/Profile";
 import Faucet from "./pages/dashboard/faucet/Faucet";
 import FundDetail from "./pages/dashboard/fund/FundDetail";
 import FundBuy from "./pages/dashboard/fund/FundBuy";
+import Home from "./pages/dashboard/home/Home";
+import Stargate from "./pages/dashboard/stargate/Stargate";
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
       {/* Dashboard Routes */}
       <Route path="dashboard">
         <Route path="home" element={<Home />} />
+        <Route path="stargate" element={<Stargate />} />
         <Route path="explore" element={<Explore />} />
         <Route path="create" element={<Create />} />
         <Route path="account" element={<Account />} />

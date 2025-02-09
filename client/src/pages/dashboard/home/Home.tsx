@@ -5,7 +5,6 @@ import TopNav from "../TopNav";
 import { Card, CardHeader, CardFooter, Image, Button } from "@heroui/react";
 
 export default function Home() {
-
     return (
         <div className="flex w-full min-h-screen bg-grey-50">
             <Sidebar />
@@ -55,9 +54,12 @@ export default function Home() {
                                     <p className="text-tiny text-white/60">Dorahacks</p>
                                 </div>
                             </div>
-                            <Button radius="full" size="sm">
-                                Check Buidl
-                            </Button>
+
+                            <Link to="https://dorahacks.io/buidl/22533" >
+                                <Button radius="full" size="sm">
+                                    Check Buidl
+                                </Button>
+                            </Link>
                         </CardFooter>
                     </Card>
                     <Card isFooterBlurred className="w-full border h-[300px] col-span-12 sm:col-span-5">

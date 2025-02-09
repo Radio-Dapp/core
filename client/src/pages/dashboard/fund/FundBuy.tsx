@@ -59,7 +59,7 @@ export default function FundBuy() {
                         </div>
                     </section>
 
-                    <BuyFundForm />
+                    <BuyFundForm item={item} />
                 </div>
             </div>
         </div>

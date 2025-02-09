@@ -5,6 +5,7 @@ import Icon from "../../shared/components/Icon";
 import { useNavigate, useLocation } from "react-router";
 import { useEffect, useState } from "react";
 import Link from "../../shared/components/Link";
+import { Tooltip } from "@heroui/react";
 
 type Props = {}
 
@@ -104,9 +105,25 @@ function TopNav({ }: Props) {
                 </div>
 
                 <div className="text-sm flex items-center gap-2">
-                    <Link to="/dashboard/faucet" className="flex border rounded-lg hover:bg-grey-100 items-center text-hover px-3 py-2">
-                        <Icon name="Wallet" className="w-5" />
-                    </Link>
+                    <Tooltip content="Bridge">
+                        <span>
+                            <Link to="https://stargate.finance/bridge?dstChain=flare&dstToken=0xFbDa5F676cB37624f28265A144A48B0d6e87d3b6" className="flex border rounded-lg hover:bg-grey-100 items-center text-hover px-3 py-2"
+                                target="_blank"
+                            >
+                                <Icon name="Route" className="w-4" />
+                            </Link>
+                        </span>
+                    </Tooltip>
+
+                    <Tooltip content="Faucet">
+                        <span>
+                            <Link to="/dashboard/faucet" className="flex border rounded-lg hover:bg-grey-100 items-center text-hover px-3 py-2"
+                            target="_blank">
+                                <Icon name="Wallet" className="w-4" />
+                            </Link>
+                        </span>
+                    </Tooltip>
+
                     <button onClick={handleLogout} className="flex text-hover  items-center gap-2 border p-2 rounded-lg hover:bg-grey-100">
                         <span className="hidden sm:block"><FormatAddress address={user?.wallet?.address || ""} /></span>
                         <Icon name="LogOut" className="w-5" />

@@ -4,14 +4,14 @@ import TopNav from "../TopNav";
 
 export default function Faucet() {
   return (
-    <div className="relative flex w-full min-h-screen bg-grey-50">
+    <div className="relative flex w-full overflow-y-hidden min-h-screen bg-grey-50">
       <Sidebar />
 
       <div className="w-full">
         <TopNav />
 
         <section
-          className="pt-[7rem] sm:ml-[6.5rem] flex flex-col gap-2 p-6 px-7 relative h-full text-white"
+          className="pt-[7rem] sm:ml-[6.5rem] flex flex-col gap-2 p-6 px-7 relative h-full text-grey-900"
           style={{
             position: "relative",
             borderRadius: "8px",
@@ -27,7 +27,7 @@ export default function Faucet() {
               backgroundSize: "cover",
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
-              opacity: 0.1,
+              opacity: 0.2,
             }}
           />
 
@@ -38,20 +38,15 @@ export default function Faucet() {
               backgroundColor: "rgba(0, 255, 0, 0.005)",
             }}
           />
-
           <div className="relative z-10 flex flex-col items-center py-16">
-            <h1 className="text-4xl tracking-wider font-medium text-grey-950">The official Radio Faucet</h1>
+            <h1 className="text-4xl tracking-wider font-medium text-grey-950">The Official Radio Faucet</h1>
             <p className="pt-4 text-grey-600">
               You can request
 
               <span className="text-primary px-1 ">
-                100 FM
+                100 USDC
               </span>
-              tokens for the Coston testnet per address in
-
-              <span className="text-primary pl-1">
-                24 hours
-              </span>.
+              tokens at a time, and you will recieve them on Coston Testnet 2.
             </p>
             <Input className="mt-10 max-w-sm" variant="bordered" label="Address" />
             <Button className="mt-5 rounded-sm font-semibold" variant="shadow" color="primary">

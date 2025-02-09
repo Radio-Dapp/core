@@ -21,6 +21,8 @@ interface tokenData {
 const TokenSelect = (props: Props) => {
     const { data, loading } = useFetch<tokenData[]>("http://localhost:9090/data/get-assets")
 
+    console.log(data);
+
     if (loading) {
         return <p className="text-muted">Loading...</p>
     }

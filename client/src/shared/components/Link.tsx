@@ -5,6 +5,7 @@ interface ILinkProps {
   to: string;
   children: Children;
   className?: string;
+  target?: string;
 }
 
 export default function (props: ILinkProps) {
@@ -12,6 +13,7 @@ export default function (props: ILinkProps) {
     <NavLink
       to={props.to}
       className={props.className}
+      target={props.target}
     >
       {props.children}
     </NavLink>

@@ -1,4 +1,4 @@
-import { Image, Tooltip} from "@heroui/react";
+import { Image, Tooltip } from "@heroui/react";
 import Icon from "../../shared/components/Icon";
 import Link from "../../shared/components/Link";
 import type { icons } from "lucide-react";
@@ -17,6 +17,11 @@ const sidebarItems: sidebarItems[] = [
     name: "Home",
     iconName: "House",
     to: "/dashboard/home",
+  },
+  {
+    name: "Stargate",
+    iconName: "Star",
+    to: "/dashboard/stargate",
   },
   {
     name: "Explore",
@@ -61,11 +66,11 @@ function Sidebar() {
       <section className="flex items-center justify-center w-full h-full ">
         <ul className="flex flex-col items-center justify-center gap-6">
           {sidebarItems.map((item, index) => (
-              <li className="btn-icon" key={index}>
-                <Link to={item.to}>
-                  <Icon name={item.iconName} className="w-6" />
-                </Link>
-              </li>
+            <li className="btn-icon" key={index}>
+              <Link to={item.to}>
+                <Icon name={item.iconName} className="w-6" />
+              </Link>
+            </li>
           ))}
         </ul>
       </section>
