@@ -1,3 +1,4 @@
+import Link from "../../../shared/components/Link";
 import Sidebar from "../Sidebar";
 import TopNav from "../TopNav";
 
@@ -61,64 +62,66 @@ export default function Home() {
                     </Card>
                     <Card isFooterBlurred className="w-full border h-[300px] col-span-12 sm:col-span-5">
                         <CardHeader className="absolute z-10 top-1 flex-col items-start">
-                            <p className="text-tiny text-white/60 uppercase font-bold">New</p>
-                            <h4 className="text-white/60 font-medium text-lg">RadioFM - Assets and Fund manager</h4>
+                            <p className="text-tiny text-white/60 uppercase font-bold">Sponser Bounty</p>
+                            <h4 className="text-white/60 font-medium text-lg">Enshrined Data Protocols</h4>
                         </CardHeader>
                         <Image
                             removeWrapper
                             isZoomed
                             alt="Card example background"
                             className="z-0 w-full h-full scale-125 -translate-y-6 object-cover"
-                            src="https://pinktiemiami.com/wp-content/uploads/2021/08/coming-soon5.png"
+                            src="https://blog.pintu.co.id/wp-content/uploads/2023/10/flare-1.jpg"
                         />
                         <CardFooter className="absolute bg-white/30 bottom-0 border-t-1 border-zinc-100/50 z-10 justify-between">
                             <div>
-                                <p className="text-black text-tiny">Available soon.</p>
-                                <p className="text-black text-tiny">Get notified.</p>
+                                <p className="text-black text-tiny">Know more about</p>
+                                <p className="text-black text-tiny">Flare</p>
                             </div>
-                            <Button className="text-tiny" radius="full" size="sm">
-                                Notify Me
-                            </Button>
+                            <Link to="https://flare.network">
+                                <Button className="text-tiny" radius="full" size="sm" >
+                                    Flare network
+                                </Button>
+                            </Link>
                         </CardFooter>
                     </Card>
+                    <Card className="border col-span-12 sm:col-span-4 h-[300px]">
+                        <CardHeader className="absolute z-10 top-1 flex-col !items-start">
+                            <p className="text-tiny text-white/60 uppercase font-bold">Conquer the funds</p>
+                            <h4 className="text-white font-medium text-large">Become a fund manager</h4>
+                        </CardHeader>
+                        <Image
+                            removeWrapper
+                            isZoomed
+                            alt="Card background"
+                            className="z-0 w-full h-full "
+                            src="https://www.hl.co.uk/__data/assets/image/0020/17722010/Index-tracker-funds.jpg"
+                        />
+                    </Card>
+                    <Card className="border col-span-12 sm:col-span-4 h-[300px]">
+                        <CardHeader className="absolute z-10 top-1 flex-col !items-start">
+                            <p className="text-tiny text-white/60 uppercase font-bold">New</p>
+                            <h4 className="text-white font-medium text-large">RadioFm - Assets and fund manager</h4>
+                        </CardHeader>
+                        <Image
+                            removeWrapper
+                            isZoomed
+                            alt="Card background"
+                            className="z-0 w-full h-full object-cover"
+                            src="https://pinktiemiami.com/wp-content/uploads/2021/08/coming-soon5.png"
+                        />
+                    </Card>
 
-                    <Card className="border col-span-12 sm:col-span-4 h-[300px]">
-                        <CardHeader className="absolute z-10 top-1 flex-col !items-start">
-                            <p className="text-tiny text-white/60 uppercase font-bold">Dummy data</p>
-                            <h4 className="text-white font-medium text-large">Some moret</h4>
-                        </CardHeader>
-                        <Image
-                            removeWrapper
-                            isZoomed
-                            alt="Card background"
-                            className="z-0 w-full h-full object-cover"
-                            src="https://heroui.com/images/card-example-4.jpeg"
-                        />
-                    </Card>
-                    <Card className="border col-span-12 sm:col-span-4 h-[300px]">
-                        <CardHeader className="absolute z-10 top-1 flex-col !items-start">
-                            <p className="text-tiny text-white/60 uppercase font-bold">Sponser Bounty</p>
-                            <h4 className="text-white font-medium text-large">Enshrined Data Protocols</h4>
-                        </CardHeader>
-                        <Image
-                            removeWrapper
-                            isZoomed
-                            alt="Card background"
-                            className="z-0 w-full h-full object-cover"
-                            src="https://blog.pintu.co.id/wp-content/uploads/2023/10/flare-1.jpg"
-                        />
-                    </Card>
                     <Card className="border col-span-12 mb-8 sm:col-span-4 h-[300px]">
                         <CardHeader className="absolute z-10 top-1 flex-col !items-start">
-                            <p className="text-tiny text-white/60 uppercase font-bold">Sponser Bounty</p>
-                            <h4 className="text-white font-medium text-large">BNB Main Track</h4>
+                            <p className="text-tiny text-white/60 uppercase font-bold">There is only one way</p>
+                            <h4 className="text-white font-medium text-large">Only up</h4>
                         </CardHeader>
                         <Image
                             removeWrapper
                             isZoomed
                             alt="Card background"
                             className="z-0 w-full h-full object-cover"
-                            src="https://public.bnbstatic.com/image/cms/blog/20220215/56e2ce27-0276-408f-ad55-2fe85ad0cb68.png"
+                            src="https://entail.fortrade.com/en-assets/fortrade/fit-in/700x700/stocks-1700606649514.jpg"
                         />
                     </Card>
                 </div>
