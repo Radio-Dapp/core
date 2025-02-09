@@ -1,10 +1,8 @@
 import Sidebar from "../Sidebar"
 import TopNav from "../TopNav";
-import Icon from "../../../shared/components/Icon";
 import { truncateString } from "../../../shared/lib/utils";
 import BuyFundForm from "./BuyFundForm";
 
-type Props = {}
 
 const item = {
     id: 1,
@@ -16,8 +14,7 @@ const item = {
     image: "https://framerusercontent.com/images/Hum9kNmaIhgXEnuF3kBhXbgEPg.png",
 }
 
-
-export default function FundBuy({ }: Props) {
+export default function FundBuy() {
     return (
         <div className="relative flex w-full min-h-screen bg-grey-50">
             <Sidebar />
@@ -62,7 +59,7 @@ export default function FundBuy({ }: Props) {
                         </div>
                     </section>
 
-                    <BuyFundForm item={item} />
+                    <BuyFundForm />
                 </div>
             </div>
         </div>

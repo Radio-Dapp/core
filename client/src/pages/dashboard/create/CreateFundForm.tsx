@@ -3,9 +3,8 @@ import Icon from "../../../shared/components/Icon";
 import React, { useState } from "react";
 import TokenSelect from "./TokenSelect";
 
-interface Props {}
 
-function CreateFundForm(props: Props) {
+function CreateFundForm() {
     const [fields, setFields] = useState<Field[]>([{
         id: 1,
         name: undefined,
@@ -16,7 +15,7 @@ function CreateFundForm(props: Props) {
 
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        let data = Object.fromEntries(new FormData(e.currentTarget));
+        const data = Object.fromEntries(new FormData(e.currentTarget));
         console.log({ data });
     }
 

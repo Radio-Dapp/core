@@ -1,6 +1,4 @@
 import { Hono } from "hono";
-import metaTxRequest from "../utils/metaTx";
-import { writeContract } from "../evm";
 import { isAddress } from "viem";
 
 const router = new Hono().basePath("/funds");

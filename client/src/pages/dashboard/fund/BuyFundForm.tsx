@@ -3,19 +3,7 @@ import Icon from "../../../shared/components/Icon";
 import useSignWithPrivy from "../../../shared/hooks/useSignWithPrivy";
 import { axiosClient } from "../../../config";
 
-interface Props {
-    item: {
-        id: number;
-        name: string;
-        tag: string;
-        minimumInvestment: number;
-        maximumInvestment: number;
-        description: string;
-        image: string;
-    }
-}
-
-function BuyFundForm(props: Props) {
+function BuyFundForm() {
     const { activeWallet, signWithPrivy, ready } = useSignWithPrivy();
 
     async function approveUSDC() {
@@ -50,6 +38,7 @@ function BuyFundForm(props: Props) {
         console.log({signature, id: props.item.id});
     }
 
+    // const { item } = props
     return (
         <Form
             className="flex flex-col w-full gap-4 mt-4"
