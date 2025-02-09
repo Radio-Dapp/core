@@ -32,7 +32,7 @@ function CreateFundForm() {
             assets: fields
         }
 
-        const res = await axiosClient.post("/api/create", reqObj)
+        const res = await axiosClient.post("/api/create-fund", reqObj)
         console.log(res.data)
     }
 

@@ -1,5 +1,5 @@
 import web3Client from "./web3Client";
-import { abi } from "../../contracts/definitions.gen";
+import { abi } from "./definitions.gen";
 import * as viem from "viem";
 
 const address: Record<string, viem.Address> = {
@@ -23,11 +23,12 @@ const RadioOrchestrator = {
 
 const definitions = { USDCe, RadioOrchestrator };
 
-web3Client.writeContract({
-    ...definitions.USDCe,
-    functionName: "mintTo",
-    args: ["0x", 5n],
-});
+export async function waitForTransactionReceipt(hash: viem.Address) {
+    const reciept = await web3Client.waitForTransactionReceipt({
+        hash
+    });
+    return reciept;
+}
 
 export function readContract<
     C extends keyof typeof definitions,
@@ -63,4 +64,4 @@ export function writeContract<
     });
 }
 
-export const evmActions = { readContract, writeContract };
+export const evmActions = { readContract, writeContract, waitForTransactionReceipt };

@@ -1,11 +1,23 @@
 import { Hono } from "hono";
 import { isAddress } from "viem";
 import FundsModel from "../models/funds";
+import UserModel from "../models/user";
+import { generateRandomAddress, generateTokenSymbol } from "../utils/utils";
+import { waitForTransactionReceipt, writeContract } from "../evm";
+import { getTransactionReceipt } from "viem/_types/actions/public/getTransactionReceipt";
 
 const router = new Hono().basePath("/api");
 
-router.get("/check-approval", async (c) => {
+router.get("/usdc-approved", async (c) => {
   try {
+    const address = c.req.query("address");
+    const res = await UserModel.findOne({ address });
+
+    if (res) {
+      return c.json({ usdcApproved: res.usdcApproved });
+    } else {
+      return c.json({ usdcApproved: false });
+    }
   } catch (error) {
     console.error("Error processing request:", error);
     return c.json(
@@ -19,9 +31,40 @@ router.get("/check-approval", async (c) => {
   }
 });
 
-router.post("/create", async (c) => {
+router.post("/update-approval", async (c) => {
   try {
-    const body: {
+    const body: { address: string; usdcApproved: boolean } = await c.req.json();
+    const { address, usdcApproved } = body;
+    const user = await UserModel.findOne({ address });
+
+    if (user) {
+      user.usdcApproved = usdcApproved;
+      await user.save();
+      return c.json({ success: true });
+    } else {
+      return c.json({ success: false, error: "User not found" }, 404);
+    }
+  } catch (error) {
+    console.error("Error processing request:", error);
+    return c.json(
+      {
+        success: false,
+        error:
+          error instanceof Error ? error.message : "Unknown error occurred",
+      },
+      500
+    );
+  }
+});
+
+router.post("/create-fund", async (c) => {
+  console.log("POST /create-fund");
+
+  try {
+    const {
+      meta,
+      assets,
+    }: {
       meta: {
         name: string;
         type: string;
@@ -33,26 +76,80 @@ router.post("/create", async (c) => {
       assets: any[];
     } = await c.req.json();
 
-    const { meta, assets } = body;
+    const fundSymbol = generateTokenSymbol(meta.name);
 
-    const fund = await FundsModel.findOne({ name: meta.name });
-
-    if (!fund) {
-      const res = new FundsModel({
-        name: meta.name,
-        type: meta.type,
-        description: meta.description,
-        minimum_investment: meta.minimum_investment,
-        maximum_investment: meta.maximum_investment,
-        creator: meta.creator,
-        assets: assets,
-      });
-
-      await res.save();
-      return c.json({ success: true, data: res });
-    } else {
-      return c.json({ success: false, error: "Fund already exists" }, 400);
+    if (!isAddress(meta.creator)) {
+      return c.json({ success: false, error: "Invalid creator address" }, 400);
     }
+
+    // const txHash = await writeContract(
+    //   "RadioOrchestrator",
+    //   "serverEnforcedFabrication",
+    //   [meta.creator, meta.name, fundSymbol]
+    // );
+
+    // setTimeout(() => {
+    //   console.log("Waiting for transaction receipt...");
+    // }, 10000);
+
+    // console.log("Waiting for transaction receipt...", txHash);
+
+    // const reciept =  await waitForTransactionReceipt(txHash);
+
+    // console.log("Transaction receipt:", reciept);
+    // return c.json({ success: true, reciept });
+
+    const res = new FundsModel({
+      address: generateRandomAddress(),
+      symbol: fundSymbol,
+      name: meta.name,
+      image:
+        "https://framerusercontent.com/images/Hum9kNmaIhgXEnuF3kBhXbgEPg.png",
+      type: meta.type,
+      description: meta.description,
+      minimum_investment: meta.minimum_investment,
+      maximum_investment: meta.maximum_investment,
+      creator: meta.creator,
+      assets: assets,
+    });
+
+    await res.save();
+    return c.json(res);
+  } catch (error) {
+    console.error("Error processing request:", error);
+    return c.json(
+      {
+        success: false,
+        error:
+          error instanceof Error ? error.message : "Unknown error occurred",
+      },
+      500
+    );
+  }
+});
+
+router.get("/get-funds", async (c) => {
+  try {
+    const funds = await FundsModel.find();
+    return c.json(funds);
+  } catch (error) {
+    console.error("Error processing request:", error);
+    return c.json(
+      {
+        success: false,
+        error:
+          error instanceof Error ? error.message : "Unknown error occurred",
+      },
+      500
+    );
+  }
+});
+
+router.get("/get-fund-by-id", async (c) => {
+  try {
+    const id = c.req.query("id");
+    const fund = await FundsModel.findById(id);
+    return c.json(fund);
   } catch (error) {
     console.error("Error processing request:", error);
     return c.json(

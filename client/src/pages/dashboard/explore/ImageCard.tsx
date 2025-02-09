@@ -1,13 +1,7 @@
 import { truncateString } from "../../../shared/lib/utils";
 
 type Props = {
-    item: {
-        id: number;
-        name: string;
-        tag: string;
-        description: string;
-        image: string;
-    }
+    item: IFunds;
 }
 
 function ImageCard({ item }: Props) {
@@ -29,8 +23,8 @@ function ImageCard({ item }: Props) {
 
                 <div className="flex flex-col gap-2 text-tiny text-grey-500">
                     <span className="flex justify-between gap-2">
-                        <p>Min Investment: $500</p>
-                        <p>Max Investment: $5000</p>
+                        <p>Min Investment: ${item.minimum_investment}</p>
+                        <p>Max Investment: ${item.maximum_investment}</p>
                     </span>
                 </div>
             </div>

@@ -4,33 +4,11 @@ import TopNav from "../TopNav";
 import Icon from "../../../shared/components/Icon";
 import Link from "../../../shared/components/Link";
 import ImageCard from "./ImageCard";
-
-
-const fundItems = [
-    {
-        id: 1,
-        name: "BTC-ETH Risk Fund",
-        tag: "Risk",
-        description: "Bitcoin based fund with Ethereum exposure..",
-        image: "https://framerusercontent.com/images/Hum9kNmaIhgXEnuF3kBhXbgEPg.png",
-    },
-    {
-        id: 2,
-        name: "EVM Chain Fund",
-        tag: "Hedge",
-        description: "Ethereum Virtual Machine based fund..",
-        image: "https://framerusercontent.com/images/sYwxVFlpwgzmT6YNHPrBLCpOuM.png",
-    },
-    {
-        id: 3,
-        name: "Solana Fund",
-        tag: "Park",
-        description: "Solana based fund with environmental focus..",
-        image: "https://framerusercontent.com/images/gg0Ji8ukA1h9AVkG0nenecPgL7A.png",
-    }
-]
+import useFetch from "../../../shared/hooks/useFetch";
 
 export default function Explore() {
+    const { data, loading } = useFetch<IFunds[]>("/api/get-funds");
+
     return (
         <div className="relative min-h-screen w-full flex bg-grey-50">
             <Sidebar />
@@ -58,10 +36,10 @@ export default function Explore() {
 
                     {/* // Cards */}
                     <section className="mt-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                        {fundItems.map((item) => (
-                            <Link key={item.id} to={`/dashboard/explore/${item.id}`}>
+                        {data?.map((item) => (
+                            <Link key={item.address} to={`/dashboard/explore/${item.address}`}>
                                 {/* <FundCard item={item} /> */}
-                                <ImageCard item={item}/>
+                                <ImageCard item={item} />
                             </Link>
                         ))}
                     </section>
