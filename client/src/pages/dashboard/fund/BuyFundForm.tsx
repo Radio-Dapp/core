@@ -1,25 +1,26 @@
-import { Form, Input, Button, Textarea } from "@heroui/react";
+import { Form, Input, Button } from "@heroui/react";
 import Icon from "../../../shared/components/Icon";
 
-interface Props {
-    item: {
-        id: number;
-        name: string;
-        tag: string;
-        minimumInvestment: number;
-        maximumInvestment: number;
-        description: string;
-        image: string;
-    }
-}
+// interface Props {
+//     item: {
+//         id: number;
+//         name: string;
+//         tag: string;
+//         minimumInvestment: number;
+//         maximumInvestment: number;
+//         description: string;
+//         image: string;
+//     }
+// }
 
-function BuyFundForm(props: Props) {
+function BuyFundForm() {
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        let data = Object.fromEntries(new FormData(e.currentTarget));
+        const data = Object.fromEntries(new FormData(e.currentTarget));
         console.log({ data });
     }
 
+    // const { item } = props
     return (
         <Form
             className="flex flex-col w-full gap-4 mt-4"

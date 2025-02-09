@@ -1,18 +1,37 @@
 import { Hono } from "hono";
+import { verifyMessage } from "viem";
 
 const router = new Hono().basePath("/funds");
 
+const nonceStore: Record<string, string> = {};
+
 router.post("/create", async (c) => {
+  
   try {
     // Verify signature
-    const body = c.req.parseBody;
+    // Parse request body
+    const body = await c.req.json();
 
-    // const verified = await verifyMessage({
-    //     address: body.user,
-    //     message: `${JSON.stringify(body.data)}${nonceStore[body.user]}`,
-    //     signature: body.sign,
-    //   });
-    
+    if (!body.user || !body.data || !body.sign) {
+      return c.json({ success: false, error: "Missing required fields" }, 400);
+    }
+
+    // Check if nonce exists for the user
+    if (!nonceStore[body.user]) {
+      return c.json({ success: false, error: "Invalid nonce or session expired" }, 401);
+    }
+
+    // Verify the signature
+    const isVerified = await verifyMessage({
+      address: body.user,
+      message: `${JSON.stringify(body.data)}${nonceStore[body.user]}`,
+      signature: body.sign,
+    });
+
+    if (!isVerified) {
+      return c.json({ success: false, error: "Signature verification failed" }, 403);
+    }
+
     // Creation Logic
     
     return c.json({

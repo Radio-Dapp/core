@@ -1,15 +1,16 @@
 import { icons } from "lucide-react";
+import React from "react";
 
 interface IIconProps {
   name: keyof typeof icons;
   color?: string;
   weight?:
-  | "thin"
-  | "light"
-  | "normal"
-  | "medium"
-  | "semibold"
-  | "bold";
+    | "thin"
+    | "light"
+    | "normal"
+    | "medium"
+    | "semibold"
+    | "bold";
   className?: string;
 }
 
@@ -45,7 +46,7 @@ function parseWeight(weight: string) {
   }
 }
 
-export const MoonIcon: preact.FunctionalComponent<preact.JSX.IntrinsicElements['svg']> = (props) => {
+export const MoonIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
     <svg
       focusable="false"
@@ -63,7 +64,7 @@ export const MoonIcon: preact.FunctionalComponent<preact.JSX.IntrinsicElements['
   );
 };
 
-export const SunIcon: preact.FunctionalComponent<preact.JSX.IntrinsicElements['svg']> = (props) => {
+export const SunIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
     <svg
       focusable="false"

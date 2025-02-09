@@ -93,6 +93,7 @@ export default function Home() {
                             removeWrapper
                             isZoomed
                             alt="Card background"
+                            style={{ opacity: 0.4 }}
                             className="z-0 w-full h-full "
                             src="https://www.hl.co.uk/__data/assets/image/0020/17722010/Index-tracker-funds.jpg"
                         />
@@ -120,6 +121,7 @@ export default function Home() {
                             removeWrapper
                             isZoomed
                             alt="Card background"
+                            style={{ opacity: 0.4 }}
                             className="z-0 w-full h-full object-cover"
                             src="https://entail.fortrade.com/en-assets/fortrade/fit-in/700x700/stocks-1700606649514.jpg"
                         />

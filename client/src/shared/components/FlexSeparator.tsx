@@ -5,7 +5,6 @@ interface ISeparatorProps {
   size?: "xs" | "sm" | "base" | "md" | "lg" | "xl" | "2xl" | "full";
 }
 
-const BASE_SIZE = "0.8rem";
 
 export default function FlexSeparator(props: ISeparatorProps) {
   const size = props.size ?? "base";
@@ -13,7 +12,6 @@ export default function FlexSeparator(props: ISeparatorProps) {
   return (
     <figure
       role="separator"
-      style={{ "--separator-base-size": BASE_SIZE }}
       className={cn(
         props.className,
         size === "xs" &&

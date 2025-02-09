@@ -1,11 +1,10 @@
-import { Image, Tooltip, User } from "@heroui/react";
+import { Image, Tooltip} from "@heroui/react";
 import Icon from "../../shared/components/Icon";
 import Link from "../../shared/components/Link";
 import type { icons } from "lucide-react";
 import ThemeSwitch from "../../shared/components/ThemeSwitch";
 // import ThemeSwitch from "../../shared/components/ThemeSwitch";
 
-type Props = {}
 
 type sidebarItems = {
   name: string;
@@ -46,7 +45,7 @@ const sidebarItems: sidebarItems[] = [
   },
 ]
 
-function Sidebar({ }: Props) {
+function Sidebar() {
   return (
     <div className="fixed bg-background glass h-screen border-r flex-col items-center justify-between hidden sm:flex z-30">
       <section className="flex flex-col w-[6.5rem] items-center ">
@@ -62,7 +61,7 @@ function Sidebar({ }: Props) {
       <section className="flex items-center justify-center w-full h-full ">
         <ul className="flex flex-col items-center justify-center gap-6">
           {sidebarItems.map((item, index) => (
-              <li className="btn-icon">
+              <li className="btn-icon" key={index}>
                 <Link to={item.to}>
                   <Icon name={item.iconName} className="w-6" />
                 </Link>
