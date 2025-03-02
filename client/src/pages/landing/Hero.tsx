@@ -1,5 +1,4 @@
 import { Button } from "@heroui/react";
-import { BackgroundBeams } from "../../shared/components/ui/bg-beams";
 import { useLogin } from "@privy-io/react-auth";
 import { useNavigate } from "react-router";
 
@@ -19,8 +18,9 @@ export default function Hero() {
 
     return (
         <div className="relative flex flex-col items-center justify-center w-full h-screen sm:px-10 lg:px-20 px-2 antialiased rounded-md">
-            <BackgroundBeams />
 
+            <div className="absolute h-full w-full dark:bg-[radial-gradient(#e5e7eb1c_1px,transparent_1px)] bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
+            
             <div className="p-4 mx-auto">
                 <div>
                     <div className="flex">
@@ -34,11 +34,11 @@ export default function Hero() {
                     </p>
                 </div>
                 <div className="relative z-10 flex flex-col items-center justify-center gap-4 mx-auto mt-6 rounded-xl sm:max-w-lg sm:flex-row">
-                    <Button className="inline w-full max-w-sm border-1 glass bg-primary-foreground hover:bg-grey-200" variant="bordered" color="default" size="lg">
+                    <Button className="inline w-full max-w-sm border-1 border-border glass bg-primary-foreground hover:bg-grey-200" variant="bordered" color="default" size="lg">
                         Docs
                     </Button>
 
-                    <Button className="inline w-full max-w-sm border-1 glass bg-primary-foreground hover:bg-grey-200" variant="bordered" color="default" size="lg" onPress={() => login()}>
+                    <Button className="inline w-full max-w-sm border-1 border-border glass bg-primary-foreground hover:bg-grey-200" variant="bordered" color="default" size="lg" onPress={() => login()}>
                         Get Started
                     </Button>
                 </div>

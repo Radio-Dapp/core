@@ -6,7 +6,6 @@ import { usePrivy } from "@privy-io/react-auth";
 import Icon from "../../shared/components/Icon";
 import { useNavigate } from "react-router";
 import { useLogin } from '@privy-io/react-auth';
-import ThemeSwitch from "../../shared/components/ThemeSwitch";
 
 const navItems = [
     { name: "Features", to: "#features" },
@@ -35,7 +34,7 @@ function NavBar({ }: Props) {
     return (
         <>
             {/* // Mobile Nav */}
-            <div className={"fixed glass top-0 flex items-center justify-between w-full px-10 border-b md:hidden bg-primary-foreground border-border z-10"}>
+            <div className={"fixed glass top-0 flex items-center justify-between w-full px-10 border-b md:hidden bg-primary-foreground border-border z-50"}>
                 <img src={
                     theme === "light" ? "/icons/logo_light.png" : "/icons/logo_dark.png"
                 } alt="logo" width={100} height={100} className="" />
@@ -57,8 +56,6 @@ function NavBar({ }: Props) {
                         </button>
                     )
                     }
-
-                    <ThemeSwitch />
 
                     <button className="p-2 btn-icon bg-grey-200">
                         <Icon name="Menu" />
@@ -99,7 +96,6 @@ function NavBar({ }: Props) {
                         </button>
                     )
                     }
-                    <ThemeSwitch />
                 </div>
 
             </div>
