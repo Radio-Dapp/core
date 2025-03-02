@@ -4,7 +4,7 @@ import { GlowingEffect } from "../../shared/components/ui/glowing";
 
 export default function Hero() {
     return (
-        <div className="h-[40rem] w-full rounded-md relative flex flex-col items-center justify-center antialiased px-10">
+        <div className="h-screen w-full rounded-md relative flex flex-col items-center justify-center antialiased px-10">
             <div className="p-4 mx-auto">
                 <div>
                     <div className="flex">
