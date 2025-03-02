@@ -1,8 +1,5 @@
-import Link from "../../../shared/components/Link";
 import Sidebar from "../Sidebar";
 import TopNav from "../TopNav";
-
-import { Card, CardHeader, CardFooter, Image, Button } from "@heroui/react";
 
 export default function Home() {
     return (
