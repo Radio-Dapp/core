@@ -67,7 +67,7 @@
     @apply text-grey-500 hover:text-grey-700 transition-colors cursor-pointer;
   }
   .glass {
-    @apply shadow-lg bg-opacity-70 backdrop-filter backdrop-blur-[8px];
+    @apply shadow-md bg-opacity-70 backdrop-filter backdrop-blur-[8px];
   }
   .p-page {
     @apply px-[4vw] py-[2vh];

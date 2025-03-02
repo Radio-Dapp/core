@@ -1,40 +1,49 @@
 import { Button } from "@heroui/react";
 import { BackgroundBeams } from "../../shared/components/ui/bg-beams";
-import { GlowingEffect } from "../../shared/components/ui/glowing";
+import { useLogin } from "@privy-io/react-auth";
+import { useNavigate } from "react-router";
 
 export default function Hero() {
+    const navigate = useNavigate();
+
+    const { login } = useLogin({
+        onComplete: ({ wasAlreadyAuthenticated }) => {
+            if (!wasAlreadyAuthenticated) {
+                navigate('/dashboard/home');
+            }
+        },
+        onError: (error) => {
+            console.log(error);
+        },
+    });
+
     return (
-        <div className="h-screen w-full rounded-md relative flex flex-col items-center justify-center antialiased px-10">
+        <div className="relative flex flex-col items-center justify-center w-full h-screen sm:px-10 lg:px-20 px-2 antialiased rounded-md">
+            <BackgroundBeams />
+
             <div className="p-4 mx-auto">
                 <div>
                     <div className="flex">
-                        <h1 className="relative z-10 text-5xl sm:text-6xl lg:text-7xl font-sans inline font-bold animate-gradient bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent text-center w-full">
-                            Create a fund in five minutes..
+                        <h1 className="relative z-10 text-5xl sm:text-6xl lg:text-7xl font-sans inline font-bold animate-gradient bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent p-3 text-center w-full">
+                            Instant Decentralised Managed Funds
                         </h1>
                     </div>
 
-                    <p className="mt-4 text-lg text-center text-grey-500">
-                        Meet radio, the fastest way to create, buy and sell managed funds.
+                    <p className="mt-2 text-lg text-center text-grey-500">
+                        Meet radio, the fastest way to create, buy and sell tokenized managed funds.
                     </p>
                 </div>
-                <div className="flex rounded-xl mt-6 flex-col sm:max-w-lg sm:flex-row gap-4 items-center justify-center relative z-10 mx-auto">
-                    <Button className="inline w-full glass max-w-sm bg-primary-foreground hover:bg-grey-100" variant="bordered" color="default" size="lg">
+                <div className="relative z-10 flex flex-col items-center justify-center gap-4 mx-auto mt-6 rounded-xl sm:max-w-lg sm:flex-row">
+                    <Button className="inline w-full max-w-sm border-1 glass bg-primary-foreground hover:bg-grey-200" variant="bordered" color="default" size="lg">
                         Docs
                     </Button>
 
-                    <GlowingEffect
-                        glow={true}
-                        disabled={false}
-                        proximity={64}
-                        inactiveZone={0.01}
-                    />
-
-                    <Button className="inline w-full glass max-w-sm bg-primary-foreground hover:bg-grey-100" variant="bordered" color="default" size="lg">
-                        Sign up
+                    <Button className="inline w-full max-w-sm border-1 glass bg-primary-foreground hover:bg-grey-200" variant="bordered" color="default" size="lg" onPress={() => login()}>
+                        Get Started
                     </Button>
                 </div>
             </div>
-            <BackgroundBeams />
+            {/* <BackgroundBeams /> */}
         </div>
     );
 }

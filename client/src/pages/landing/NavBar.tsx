@@ -6,6 +6,7 @@ import { usePrivy } from "@privy-io/react-auth";
 import Icon from "../../shared/components/Icon";
 import { useNavigate } from "react-router";
 import { useLogin } from '@privy-io/react-auth';
+import ThemeSwitch from "../../shared/components/ThemeSwitch";
 
 const navItems = [
     { name: "Features", to: "#features" },
@@ -43,7 +44,7 @@ function NavBar({ }: Props) {
                 <div className="flex gap-3 items-center">
                     {!ready || (ready && authenticated) ? (
                         <Tooltip content="Dashboard">
-                            <span>
+                            <span className="">
                                 <Link to="/dashboard/home" className="p-2 btn-icon hover:text-primary-500 bg-grey-200">
                                     <Icon className="" name="LayoutDashboard" />
                                 </Link>
@@ -56,6 +57,9 @@ function NavBar({ }: Props) {
                         </button>
                     )
                     }
+
+                    <ThemeSwitch />
+
                     <button className="p-2 btn-icon bg-grey-200">
                         <Icon name="Menu" />
                     </button>
@@ -79,21 +83,25 @@ function NavBar({ }: Props) {
                 </ul>
 
                 {/* Dashboard / Login */}
-                {!ready || (ready && authenticated) ? (
-                    <Tooltip content="Dashboard">
-                        <span>
-                            <Link to="/dashboard/home" className="p-2 btn-icon hover:text-primary-500 bg-grey-200">
-                                <Icon className="" name="LayoutDashboard" />
-                            </Link>
-                        </span>
-                    </Tooltip>
-                ) : (
-                    <button className="p-2 btn-icon bg-grey-200"
-                        onClick={login}>
-                        <Icon name="LogIn" />
-                    </button>
-                )
-                }
+                <div className="flex gap-3 items-center">
+                    {!ready || (ready && authenticated) ? (
+                        <Tooltip content="Dashboard">
+                            <span>
+                                <Link to="/dashboard/home" className="p-2 btn-icon hover:text-primary-500 bg-grey-200">
+                                    <Icon className="" name="LayoutDashboard" />
+                                </Link>
+                            </span>
+                        </Tooltip>
+                    ) : (
+                        <button className="p-2 btn-icon bg-grey-200"
+                            onClick={login}>
+                            <Icon name="LogIn" />
+                        </button>
+                    )
+                    }
+                    <ThemeSwitch />
+                </div>
+
             </div>
         </>
     )
