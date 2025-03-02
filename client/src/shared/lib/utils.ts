@@ -1,4 +1,10 @@
 import type { FormSubmitEvent } from "../types/utils.d.ts";
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+ 
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
 
 export function parseFormEventData(event: FormSubmitEvent) {
   return Object.fromEntries(

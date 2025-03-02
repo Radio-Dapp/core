@@ -1,4 +1,5 @@
 // import { axiosClient } from "../../config"
+import Hero from "./Hero"
 import NavBar from "./NavBar"
 
 interface Props { }
@@ -14,8 +15,8 @@ export default function Landing({ }: Props) {
         <NavBar />
       </section>
 
-      <section id="hero" className="w-full flex items-center justify-center  h-screen text-center uppercase tracking-widest text-muted text-7xl">
-        
+      <section id="hero" className="w-full">
+        <Hero />
       </section>
 {/* 
       <section id="features" className="w-full flex items-center justify-center bg-grey-200 h-screen text-center uppercase tracking-widest text-muted text-7xl">

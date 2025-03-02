@@ -31,7 +31,7 @@ export default function Home() {
                 </section> */}
 
 
-                <div className="sm:ml-[6.5rem] gap-6 grid grid-cols-12 grid-rows-2 px-8 mt-8">
+                {/* <div className="sm:ml-[6.5rem] gap-6 grid grid-cols-12 grid-rows-2 px-8 mt-8">
                     <Card isFooterBlurred className="w-full h-[300px] col-span-12 sm:col-span-7 border">
                         <CardHeader className="absolute z-10 top-1 flex-col items-end">
                             <p className="text-tiny text-white/60 uppercase font-bold">EthOxford 2025</p>
@@ -128,7 +128,7 @@ export default function Home() {
                             src="https://entail.fortrade.com/en-assets/fortrade/fit-in/700x700/stocks-1700606649514.jpg"
                         />
                     </Card>
-                </div>
+                </div> */}
             </div>
         </div>
     );
